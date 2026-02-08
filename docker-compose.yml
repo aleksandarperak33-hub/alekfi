@@ -1,0 +1,79 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: openclaw
+      POSTGRES_PASSWORD: openclaw
+      POSTGRES_DB: openclaw
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U openclaw -d openclaw"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  swarm:
+    build: .
+    restart: unless-stopped
+    command: python -m open_claw.main --swarm
+    depends_on:
+      redis:
+        condition: service_healthy
+    env_file:
+      - .env
+
+  gatekeeper:
+    build: .
+    restart: unless-stopped
+    command: python -m open_claw.main --gatekeeper
+    depends_on:
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    env_file:
+      - .env
+
+  brain:
+    build: .
+    restart: unless-stopped
+    command: python -m open_claw.main --brain
+    depends_on:
+      postgres:
+        condition: service_healthy
+    env_file:
+      - .env
+
+  api:
+    build: .
+    restart: unless-stopped
+    command: python -m open_claw.main --server
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    env_file:
+      - .env
+
+volumes:
+  pgdata:
