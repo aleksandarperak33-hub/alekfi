@@ -1,0 +1,62 @@
+{
+  "anthropic.com": {
+    "web": {
+      "results": [
+        {
+          "title": "Building reliable eval harnesses for agentic systems",
+          "url": "https://www.anthropic.com/engineering/reliable-eval-harnesses",
+          "description": "A practical guide to evaluation loops, failure buckets, and regression checks.",
+          "age": "1 day ago"
+        }
+      ]
+    }
+  },
+  "simonwillison.net": {
+    "web": {
+      "results": [
+        {
+          "title": "Prompt tools and MCP patterns that actually scale",
+          "url": "https://simonwillison.net/2026/02/15/prompt-tools-mcp/",
+          "description": "Notes on maintainable tool contracts and testable prompt interfaces.",
+          "age": "1 day ago"
+        }
+      ]
+    }
+  },
+  "ghuntley.com": {
+    "web": {
+      "results": [
+        {
+          "title": "Multi-agent handoffs without chaos",
+          "url": "https://ghuntley.com/multi-agent-handoffs/",
+          "description": "A role-based strategy for planner/executor workflows.",
+          "age": "2 days ago"
+        }
+      ]
+    }
+  },
+  "news.ycombinator.com": {
+    "web": {
+      "results": [
+        {
+          "title": "Ask HN: How are you evaluating coding agents?",
+          "url": "https://news.ycombinator.com/item?id=12345678",
+          "description": "Practitioner thread on eval metrics, replay harnesses, and memory drift.",
+          "age": "1 day ago"
+        }
+      ]
+    }
+  },
+  "lilianweng.github.io": {
+    "web": {
+      "results": [
+        {
+          "title": "Agent memory and long-context strategies",
+          "url": "https://lilianweng.github.io/posts/2026-02-14-agent-memory/",
+          "description": "Survey of memory compression and retrieval techniques for agents.",
+          "age": "2 days ago"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI Self-Improvement Digest"
+  short_description: "Daily digest for agent self-improvement patterns"
+  default_prompt: "Generate today\\'s AI self-improvement digest, dedupe memory, and propose one concrete setup upgrade."
