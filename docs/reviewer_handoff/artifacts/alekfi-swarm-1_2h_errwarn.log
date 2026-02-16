@@ -1,0 +1,17 @@
+{"ts": "2026-02-16T14:54:55.524534+00:00", "level": "INFO", "logger": "alekfi.swarm.manager", "msg": "commodities (yfinance) scraper activated (interval=300s)"}
+{"ts": "2026-02-16T14:54:55.569945+00:00", "level": "WARNING", "logger": "alekfi.swarm.manager", "msg": "YouTube scraper SKIPPED \u2014 YOUTUBE_API_KEY not set"}
+{"ts": "2026-02-16T14:54:55.785095+00:00", "level": "WARNING", "logger": "alekfi.swarm.manager", "msg": "Discord scraper SKIPPED \u2014 DISCORD_BOT_TOKEN not set"}
+{"ts": "2026-02-16T14:54:55.785185+00:00", "level": "WARNING", "logger": "alekfi.swarm.manager", "msg": "Telegram scraper SKIPPED \u2014 TELEGRAM_API_ID/HASH not set"}
+{"ts": "2026-02-16T14:54:55.785233+00:00", "level": "WARNING", "logger": "alekfi.swarm.manager", "msg": "Twitter scraper DORMANT \u2014 no TWITTERAPIIO_API_KEY or TWITTER_BEARER_TOKEN"}
+{"ts": "2026-02-16T14:55:00.391718+00:00", "level": "WARNING", "logger": "alekfi.swarm.tiktok_sc", "msg": "[tiktok/sc] search failed (402) for 'penny stocks'"}
+{"ts": "2026-02-16T14:55:00.392607+00:00", "level": "WARNING", "logger": "alekfi.swarm.linkedin_sc", "msg": "[linkedin/sc] company scrape failed (402) for Google"}
+{"ts": "2026-02-16T14:55:00.396390+00:00", "level": "WARNING", "logger": "alekfi.swarm.instagram_sc", "msg": "[instagram/sc] posts failed (402) for @wealthsimple"}
+{"ts": "2026-02-16T14:55:00.396926+00:00", "level": "WARNING", "logger": "alekfi.swarm.facebook_sc", "msg": "[facebook/sc] page scrape failed (402) for TheEconomist"}
+{"ts": "2026-02-16T14:55:01.089802+00:00", "level": "WARNING", "logger": "alekfi.swarm.instagram_sc", "msg": "[instagram/sc] posts failed (402) for @wsj"}
+{"ts": "2026-02-16T14:55:01.142298+00:00", "level": "WARNING", "logger": "alekfi.swarm.tiktok_sc", "msg": "[tiktok/sc] search failed (402) for 'bear market'"}
+{"ts": "2026-02-16T15:05:01.543343+00:00", "level": "WARNING", "logger": "alekfi.swarm.instagram_sc", "msg": "[instagram/sc] posts failed (402) for @nike"}
+{"ts": "2026-02-16T15:05:01.580567+00:00", "level": "WARNING", "logger": "alekfi.swarm.tiktok_sc", "msg": "[tiktok/sc] search failed (402) for 'brand quality decline'"}
+{"ts": "2026-02-16T15:05:01.823558+00:00", "level": "WARNING", "logger": "alekfi.swarm.tiktok_sc", "msg": "[tiktok/sc] search failed (402) for 'subscription cancel'"}
+{"ts": "2026-02-16T15:05:02.531773+00:00", "level": "WARNING", "logger": "alekfi.swarm.instagram_sc", "msg": "[instagram/sc] posts failed (402) for @meta"}
+{"ts": "2026-02-16T15:10:01.172221+00:00", "level": "WARNING", "logger": "alekfi.swarm.linkedin_sc", "msg": "[linkedin/sc] company scrape failed (402) for Apple"}
+{"ts": "2026-02-16T15:10:01.173309+00:00", "level": "WARNING", "logger": "alekfi.swarm.facebook_sc", "msg": "[facebook/sc] page scrape failed (402) for nvidia"}

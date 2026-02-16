@@ -1,0 +1,79 @@
+
+     _    _      _    _____ _
+    / \  | | ___| | _|  ___(_)
+   / _ \ | |/ _ \ |/ / |_  | |
+  / ___ \| |  __/   <|  _| | |
+ /_/   \_\_|\___|_|\_\_|   |_|  v2.0.0
+  Social-media intelligence for hedge funds
+
+{"ts": "2026-02-16T13:54:12.836354+00:00", "level": "INFO", "logger": "alekfi", "msg": "Starting components: server"}
+{"ts": "2026-02-16T13:54:13.873595+00:00", "level": "INFO", "logger": "alekfi.db.database", "msg": "Database tables initialised"}
+{"ts": "2026-02-16T13:54:13.876102+00:00", "level": "INFO", "logger": "alekfi", "msg": "Database ready"}
+INFO:     Started server process [1]
+INFO:     Waiting for application startup.
+{"ts": "2026-02-16T13:54:15.015823+00:00", "level": "INFO", "logger": "alekfi.db.database", "msg": "Database tables initialised"}
+{"ts": "2026-02-16T13:54:15.015935+00:00", "level": "INFO", "logger": "alekfi.api.app", "msg": "Database initialised"}
+{"ts": "2026-02-16T13:54:15.015961+00:00", "level": "INFO", "logger": "alekfi.api.app", "msg": "AlekFi API v2.0.0 starting"}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     172.19.0.1:56324 - "GET /api/signals/forecasts?strict=true&limit=200 HTTP/1.1" 200 OK
+INFO:     172.19.0.1:56334 - "GET /api/signals/forecasts?strict=false&limit=500 HTTP/1.1" 422 Unprocessable Entity
+INFO:     172.19.0.1:35200 - "GET /api/signals/forecasts?strict=true&limit=200 HTTP/1.1" 200 OK
+INFO:     172.19.0.1:35216 - "GET /api/signals/forecasts?strict=false&limit=500 HTTP/1.1" 422 Unprocessable Entity
+INFO:     172.19.0.1:41886 - "GET /api/signals/forecasts?strict=false&limit=10 HTTP/1.1" 200 OK
+INFO:     172.19.0.1:37722 - "GET /api/signals/forecasts?strict=true&limit=200 HTTP/1.1" 200 OK
+INFO:     172.19.0.1:37724 - "GET /api/signals/forecasts?strict=false&limit=500 HTTP/1.1" 422 Unprocessable Entity
+INFO:     172.19.0.1:43314 - "GET /api/signals/forecasts?strict=false&limit=500 HTTP/1.1" 422 Unprocessable Entity
+INFO:     172.19.0.1:52042 - "GET /api/signals/forecasts?strict=true&limit=200 HTTP/1.1" 200 OK
+INFO:     172.19.0.1:52054 - "GET /api/signals/forecasts?strict=false&limit=200 HTTP/1.1" 200 OK
+INFO:     198.176.115.232:53940 - "GET /api/signals?limit=50 HTTP/1.1" 200 OK
+INFO:     198.176.115.232:53939 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     198.176.115.232:53939 - "GET /api/signals/accuracy/stats HTTP/1.1" 200 OK
+INFO:     198.176.115.232:53939 - "GET / HTTP/1.1" 304 Not Modified
+INFO:     198.176.115.232:53939 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     198.176.115.232:53944 - "GET /api/sources/feed?limit=30 HTTP/1.1" 200 OK
+INFO:     198.176.115.232:53942 - "GET /api/signals?limit=50 HTTP/1.1" 200 OK
+INFO:     198.176.115.232:53945 - "GET /api/companies/rankings?limit=30&hours=24 HTTP/1.1" 200 OK
+INFO:     198.176.115.232:53943 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     198.176.115.232:53943 - "GET /api/signals/accuracy/stats HTTP/1.1" 200 OK
+INFO:     198.176.115.232:53942 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     198.176.115.232:53973 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     198.176.115.232:53976 - "GET /api/sources/feed?limit=30 HTTP/1.1" 200 OK
+INFO:     198.176.115.232:53975 - "GET /api/signals?limit=50 HTTP/1.1" 200 OK
+INFO:     198.176.115.232:53974 - "GET /api/companies/rankings?limit=30&hours=24 HTTP/1.1" 200 OK
+INFO:     198.176.115.232:53977 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     198.176.115.232:53974 - "GET /api/signals/accuracy/stats HTTP/1.1" 200 OK
+INFO:     198.176.115.232:53975 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     198.176.115.232:54011 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     198.176.115.232:54012 - "GET /api/sources/feed?limit=30 HTTP/1.1" 200 OK
+INFO:     198.176.115.232:54013 - "GET /api/signals?limit=50 HTTP/1.1" 200 OK
+INFO:     198.176.115.232:54015 - "GET /api/companies/rankings?limit=30&hours=24 HTTP/1.1" 200 OK
+INFO:     198.176.115.232:54014 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     198.176.115.232:54014 - "GET /api/signals/accuracy/stats HTTP/1.1" 200 OK
+INFO:     198.176.115.232:54013 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     172.19.0.1:51162 - "GET /api/signals/forecasts?strict=true&limit=200 HTTP/1.1" 200 OK
+INFO:     172.19.0.1:51170 - "GET /api/signals/forecasts?strict=false&limit=200 HTTP/1.1" 200 OK
+INFO:     172.19.0.1:33496 - "GET /api/signals/forecasts?strict=true&limit=200 HTTP/1.1" 200 OK
+INFO:     172.19.0.1:33506 - "GET /api/signals/forecasts?strict=false&limit=200 HTTP/1.1" 200 OK
+INFO:     172.19.0.1:49010 - "GET /api/signals/forecasts?strict=true&limit=200 HTTP/1.1" 200 OK
+INFO:     172.19.0.1:49026 - "GET /api/signals/forecasts?strict=false&limit=200 HTTP/1.1" 200 OK
+INFO:     198.176.115.232:56561 - "GET /api/sources/feed?limit=30 HTTP/1.1" 200 OK
+INFO:     198.176.115.232:56560 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     198.176.115.232:56559 - "GET /api/signals?limit=50 HTTP/1.1" 200 OK
+INFO:     198.176.115.232:56558 - "GET /api/companies/rankings?limit=30&hours=24 HTTP/1.1" 200 OK
+INFO:     198.176.115.232:56562 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     198.176.115.232:56562 - "GET /api/signals/accuracy/stats HTTP/1.1" 200 OK
+INFO:     198.176.115.232:56559 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     172.19.0.1:59216 - "GET /api/signals/forecasts?strict=true&limit=200 HTTP/1.1" 200 OK
+INFO:     172.19.0.1:59224 - "GET /api/signals/forecasts?strict=false&limit=200 HTTP/1.1" 200 OK
+INFO:     172.19.0.1:41786 - "GET /api/signals/forecasts?strict=true&limit=200 HTTP/1.1" 200 OK
+INFO:     172.19.0.1:41802 - "GET /api/signals/forecasts?strict=false&limit=200 HTTP/1.1" 200 OK
+INFO:     172.19.0.1:51744 - "GET /api/signals/forecasts?strict=true&limit=200 HTTP/1.1" 200 OK
+INFO:     172.19.0.1:51760 - "GET /api/signals/forecasts?strict=false&limit=200 HTTP/1.1" 200 OK
+INFO:     172.19.0.1:50530 - "GET /api/signals/forecasts?strict=true&limit=200 HTTP/1.1" 200 OK
+INFO:     172.19.0.1:50540 - "GET /api/signals/forecasts?strict=false&limit=200 HTTP/1.1" 200 OK
+INFO:     172.19.0.1:54356 - "GET /api/signals/forecasts?strict=true&limit=3 HTTP/1.1" 200 OK
+INFO:     172.19.0.1:35856 - "GET /api/signals/forecasts?strict=true&limit=200 HTTP/1.1" 200 OK
+INFO:     172.19.0.1:35864 - "GET /api/signals/forecasts?strict=false&limit=200 HTTP/1.1" 200 OK
+INFO:     172.19.0.1:45132 - "GET /api/signals/forecasts?strict=true&limit=200 HTTP/1.1" 200 OK
+INFO:     172.19.0.1:45148 - "GET /api/signals/forecasts?strict=false&limit=200 HTTP/1.1" 200 OK

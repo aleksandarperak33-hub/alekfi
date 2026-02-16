@@ -1,0 +1,562 @@
+
+     _    _      _    _____ _
+    / \  | | ___| | _|  ___(_)
+   / _ \ | |/ _ \ |/ / |_  | |
+  / ___ \| |  __/   <|  _| | |
+ /_/   \_\_|\___|_|\_\_|   |_|  v2.0.0
+  Social-media intelligence for hedge funds
+
+{"ts": "2026-02-16T14:54:53.885390+00:00", "level": "INFO", "logger": "alekfi", "msg": "Starting components: swarm"}
+{"ts": "2026-02-16T14:54:54.520226+00:00", "level": "INFO", "logger": "alekfi.db.database", "msg": "Database tables initialised"}
+{"ts": "2026-02-16T14:54:54.522100+00:00", "level": "INFO", "logger": "alekfi", "msg": "Database ready"}
+{"ts": "2026-02-16T14:54:55.521780+00:00", "level": "INFO", "logger": "alekfi.swarm.manager", "msg": "Using SEC EDGAR v2 (enhanced multi-form scraper)"}
+{"ts": "2026-02-16T14:54:55.524220+00:00", "level": "INFO", "logger": "alekfi.swarm.manager", "msg": "4chan /pol/ geopolitical scraper activated (interval=60s)"}
+{"ts": "2026-02-16T14:54:55.524322+00:00", "level": "INFO", "logger": "alekfi.swarm.manager", "msg": "clinical trials scraper activated (interval=300s)"}
+{"ts": "2026-02-16T14:54:55.524367+00:00", "level": "INFO", "logger": "alekfi.swarm.manager", "msg": "earnings calendar scraper activated (interval=1800s)"}
+{"ts": "2026-02-16T14:54:55.524402+00:00", "level": "INFO", "logger": "alekfi.swarm.manager", "msg": "Finviz news scraper activated (interval=30s)"}
+{"ts": "2026-02-16T14:54:55.524434+00:00", "level": "INFO", "logger": "alekfi.swarm.manager", "msg": "StockTwits scraper activated (interval=30s)"}
+{"ts": "2026-02-16T14:54:55.524462+00:00", "level": "INFO", "logger": "alekfi.swarm.manager", "msg": "options flow scraper activated (interval=60s)"}
+{"ts": "2026-02-16T14:54:55.524501+00:00", "level": "INFO", "logger": "alekfi.swarm.manager", "msg": "whale tracker scraper activated (interval=60s)"}
+{"ts": "2026-02-16T14:54:55.524534+00:00", "level": "INFO", "logger": "alekfi.swarm.manager", "msg": "commodities (yfinance) scraper activated (interval=300s)"}
+{"ts": "2026-02-16T14:54:55.529883+00:00", "level": "INFO", "logger": "alekfi.swarm.manager", "msg": "congressional trades scraper activated (interval=3600s)"}
+{"ts": "2026-02-16T14:54:55.534628+00:00", "level": "INFO", "logger": "alekfi.swarm.manager", "msg": "SEC 13F filings scraper activated (interval=3600s)"}
+{"ts": "2026-02-16T14:54:55.539181+00:00", "level": "INFO", "logger": "alekfi.swarm.manager", "msg": "FOMC/Fed press scraper activated (interval=1800s)"}
+{"ts": "2026-02-16T14:54:55.550424+00:00", "level": "INFO", "logger": "alekfi.swarm.manager", "msg": "CFTC COT positions scraper activated (interval=86400s)"}
+{"ts": "2026-02-16T14:54:55.553925+00:00", "level": "INFO", "logger": "alekfi.swarm.manager", "msg": "Polymarket predictions scraper activated (interval=900s)"}
+{"ts": "2026-02-16T14:54:55.560544+00:00", "level": "INFO", "logger": "alekfi.swarm.manager", "msg": "lobbyist disclosures scraper activated (interval=3600s)"}
+{"ts": "2026-02-16T14:54:55.564301+00:00", "level": "INFO", "logger": "alekfi.swarm.manager", "msg": "FINRA dark pool ATS scraper activated (interval=86400s)"}
+{"ts": "2026-02-16T14:54:55.566692+00:00", "level": "INFO", "logger": "alekfi.swarm.manager", "msg": "crypto on-chain whales scraper activated (interval=300s)"}
+{"ts": "2026-02-16T14:54:55.567010+00:00", "level": "INFO", "logger": "alekfi.swarm.manager", "msg": "prediction markets velocity scraper activated (interval=300s)"}
+{"ts": "2026-02-16T14:54:55.569815+00:00", "level": "INFO", "logger": "alekfi.swarm.manager", "msg": "Reddit web scraper activated (no API key needed)"}
+{"ts": "2026-02-16T14:54:55.569945+00:00", "level": "WARNING", "logger": "alekfi.swarm.manager", "msg": "YouTube scraper SKIPPED \u2014 YOUTUBE_API_KEY not set"}
+{"ts": "2026-02-16T14:54:55.760733+00:00", "level": "INFO", "logger": "alekfi.swarm.manager", "msg": "Apify quota OK \u2014 $4.75/$5.00 used (95%)"}
+{"ts": "2026-02-16T14:54:55.769842+00:00", "level": "INFO", "logger": "alekfi.swarm.manager", "msg": "TikTok scraper activated (ScrapeCreators, interval=600s)"}
+{"ts": "2026-02-16T14:54:55.772213+00:00", "level": "INFO", "logger": "alekfi.swarm.manager", "msg": "Instagram scraper activated (ScrapeCreators, interval=600s)"}
+{"ts": "2026-02-16T14:54:55.778468+00:00", "level": "INFO", "logger": "alekfi.swarm.manager", "msg": "LinkedIn scraper activated (ScrapeCreators, interval=900s)"}
+{"ts": "2026-02-16T14:54:55.783363+00:00", "level": "INFO", "logger": "alekfi.swarm.manager", "msg": "Facebook scraper activated (ScrapeCreators, interval=900s)"}
+{"ts": "2026-02-16T14:54:55.785095+00:00", "level": "WARNING", "logger": "alekfi.swarm.manager", "msg": "Discord scraper SKIPPED \u2014 DISCORD_BOT_TOKEN not set"}
+{"ts": "2026-02-16T14:54:55.785185+00:00", "level": "WARNING", "logger": "alekfi.swarm.manager", "msg": "Telegram scraper SKIPPED \u2014 TELEGRAM_API_ID/HASH not set"}
+{"ts": "2026-02-16T14:54:55.785233+00:00", "level": "WARNING", "logger": "alekfi.swarm.manager", "msg": "Twitter scraper DORMANT \u2014 no TWITTERAPIIO_API_KEY or TWITTER_BEARER_TOKEN"}
+{"ts": "2026-02-16T14:54:55.785270+00:00", "level": "INFO", "logger": "alekfi.swarm.manager", "msg": "Real mode: 36 active scrapers, 4 dormant (youtube, discord, telegram, twitter)"}
+{"ts": "2026-02-16T14:54:55.785376+00:00", "level": "INFO", "logger": "alekfi", "msg": "Pipeline running \u2014 press Ctrl+C to stop"}
+{"ts": "2026-02-16T14:54:55.785570+00:00", "level": "INFO", "logger": "alekfi.swarm.manager", "msg": "Swarm starting: 36 scrapers [news_rss, sec_edgar, hackernews, 4chan_biz, appstore, glassdoor, amazon_reviews, github_trending, patents, blind, federal_register, fda, google_play, 4chan_pol, clinical_trials, earnings_calendar, finviz_news, stocktwits, options_flow, whale_tracker, commodities, congressional_trades, sec_13f, fomc, cftc_cot, polymarket, lobbyist, dark_pool, crypto_onchain, prediction_markets, reddit, google_trends, tiktok, instagram, linkedin, facebook]"}
+{"ts": "2026-02-16T14:54:55.785890+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] starting scraper (interval=15s)"}
+{"ts": "2026-02-16T14:54:55.785949+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 1/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T14:54:55.786104+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[sec_edgar] starting scraper (interval=60s)"}
+{"ts": "2026-02-16T14:54:55.814451+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] starting scraper (interval=15s)"}
+{"ts": "2026-02-16T14:54:55.873389+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_biz] starting scraper (interval=60s)"}
+{"ts": "2026-02-16T14:54:55.963072+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[appstore] starting scraper (interval=300s)"}
+{"ts": "2026-02-16T14:54:55.972511+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[glassdoor] starting scraper (interval=600s)"}
+{"ts": "2026-02-16T14:54:55.981256+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[amazon_reviews] starting scraper (interval=600s)"}
+{"ts": "2026-02-16T14:54:55.989947+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[github_trending] starting scraper (interval=300s)"}
+{"ts": "2026-02-16T14:54:56.000908+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[patents] starting scraper (interval=600s)"}
+{"ts": "2026-02-16T14:54:56.001370+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[blind] starting scraper (interval=600s)"}
+{"ts": "2026-02-16T14:54:56.029808+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[federal_register] starting scraper (interval=600s)"}
+{"ts": "2026-02-16T14:54:56.044591+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[fda] starting scraper (interval=600s)"}
+{"ts": "2026-02-16T14:54:56.050850+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[google_play] starting scraper (interval=300s)"}
+{"ts": "2026-02-16T14:54:56.085455+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_pol] starting scraper (interval=60s)"}
+{"ts": "2026-02-16T14:54:56.099376+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[clinical_trials] starting scraper (interval=300s)"}
+{"ts": "2026-02-16T14:54:56.121891+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[earnings_calendar] starting scraper (interval=1800s)"}
+{"ts": "2026-02-16T14:54:56.145299+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] starting scraper (interval=30s)"}
+{"ts": "2026-02-16T14:54:56.156282+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] starting scraper (interval=30s)"}
+{"ts": "2026-02-16T14:54:56.184808+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[options_flow] starting scraper (interval=60s)"}
+{"ts": "2026-02-16T14:54:56.185620+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[whale_tracker] starting scraper (interval=60s)"}
+{"ts": "2026-02-16T14:54:56.193759+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[commodities] starting scraper (interval=300s)"}
+{"ts": "2026-02-16T14:54:56.202206+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[congressional_trades] starting scraper (interval=3600s)"}
+{"ts": "2026-02-16T14:54:56.232640+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[sec_13f] starting scraper (interval=3600s)"}
+{"ts": "2026-02-16T14:54:56.255594+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[fomc] starting scraper (interval=1800s)"}
+{"ts": "2026-02-16T14:54:56.299600+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[cftc_cot] starting scraper (interval=86400s)"}
+{"ts": "2026-02-16T14:54:56.322131+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[polymarket] starting scraper (interval=900s)"}
+{"ts": "2026-02-16T14:54:56.372114+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[lobbyist] starting scraper (interval=3600s)"}
+{"ts": "2026-02-16T14:54:56.384937+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[dark_pool] starting scraper (interval=86400s)"}
+{"ts": "2026-02-16T14:54:56.395279+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[crypto_onchain] starting scraper (interval=300s)"}
+{"ts": "2026-02-16T14:54:56.403477+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[prediction_markets] starting scraper (interval=300s)"}
+{"ts": "2026-02-16T14:54:56.403897+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[reddit] starting scraper (interval=300s)"}
+{"ts": "2026-02-16T14:54:56.404145+00:00", "level": "INFO", "logger": "alekfi.swarm.reddit_web", "msg": "[reddit] cycle 1 \u2014 scraping 15 subreddits (tiers active: 1)"}
+{"ts": "2026-02-16T14:54:56.412392+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[google_trends] starting scraper (interval=3600s)"}
+{"ts": "2026-02-16T14:54:56.412745+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[tiktok] starting scraper (interval=600s)"}
+{"ts": "2026-02-16T14:54:56.413105+00:00", "level": "INFO", "logger": "alekfi.swarm.tiktok_sc", "msg": "[tiktok/sc] scraping 'finance_direct' keywords: ['penny stocks', 'bear market']"}
+{"ts": "2026-02-16T14:54:56.434941+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[instagram] starting scraper (interval=600s)"}
+{"ts": "2026-02-16T14:54:56.435255+00:00", "level": "INFO", "logger": "alekfi.swarm.instagram_sc", "msg": "[instagram/sc] scraping 'finance_news' profiles: ['wealthsimple', 'wsj']"}
+{"ts": "2026-02-16T14:54:56.462390+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[linkedin] starting scraper (interval=900s)"}
+{"ts": "2026-02-16T14:54:56.462696+00:00", "level": "INFO", "logger": "alekfi.swarm.linkedin_sc", "msg": "[linkedin/sc] scraping company: Google"}
+{"ts": "2026-02-16T14:54:56.489887+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[facebook] starting scraper (interval=900s)"}
+{"ts": "2026-02-16T14:54:56.490244+00:00", "level": "INFO", "logger": "alekfi.swarm.facebook_sc", "msg": "[facebook/sc] scraping page: TheEconomist (financial_news)"}
+{"ts": "2026-02-16T14:54:57.284096+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[patents] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:54:58.333385+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[whale_tracker] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:54:59.120609+00:00", "level": "INFO", "logger": "alekfi.swarm.sec_13f", "msg": "SEC 13F scraper collected 20 new filings"}
+{"ts": "2026-02-16T14:54:59.125625+00:00", "level": "INFO", "logger": "alekfi.swarm.polymarket", "msg": "Polymarket scraper found 11 relevant markets"}
+{"ts": "2026-02-16T14:54:59.677539+00:00", "level": "INFO", "logger": "alekfi.swarm.dark_pool", "msg": "Dark pool scraper found 9 qualifying trades"}
+{"ts": "2026-02-16T14:55:00.350666+00:00", "level": "INFO", "logger": "alekfi.swarm.cftc_cot", "msg": "CFTC COT scraper collected 1 commodity reports"}
+{"ts": "2026-02-16T14:55:00.391718+00:00", "level": "WARNING", "logger": "alekfi.swarm.tiktok_sc", "msg": "[tiktok/sc] search failed (402) for 'penny stocks'"}
+{"ts": "2026-02-16T14:55:00.392607+00:00", "level": "WARNING", "logger": "alekfi.swarm.linkedin_sc", "msg": "[linkedin/sc] company scrape failed (402) for Google"}
+{"ts": "2026-02-16T14:55:00.396390+00:00", "level": "WARNING", "logger": "alekfi.swarm.instagram_sc", "msg": "[instagram/sc] posts failed (402) for @wealthsimple"}
+{"ts": "2026-02-16T14:55:00.396926+00:00", "level": "WARNING", "logger": "alekfi.swarm.facebook_sc", "msg": "[facebook/sc] page scrape failed (402) for TheEconomist"}
+{"ts": "2026-02-16T14:55:00.742779+00:00", "level": "INFO", "logger": "alekfi.swarm.earnings_calendar", "msg": "[earnings_calendar] parsed 7 entries from Yahoo"}
+{"ts": "2026-02-16T14:55:00.746174+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[linkedin] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:55:00.746369+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[facebook] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:55:00.823135+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[google_trends] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:55:00.824998+00:00", "level": "INFO", "logger": "alekfi.swarm.fomc", "msg": "FOMC scraper collected 35 new items"}
+{"ts": "2026-02-16T14:55:00.844606+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 143 posts, 59 bullish, 12 bearish"}
+{"ts": "2026-02-16T14:55:01.033691+00:00", "level": "INFO", "logger": "alekfi.swarm.congressional_trades", "msg": "Congressional trades scraper collected 582 new filings"}
+{"ts": "2026-02-16T14:55:01.060378+00:00", "level": "INFO", "logger": "alekfi.swarm.prediction_markets", "msg": "[prediction_markets] fetched 405 contracts (poly=30, kalshi=375)"}
+{"ts": "2026-02-16T14:55:01.089802+00:00", "level": "WARNING", "logger": "alekfi.swarm.instagram_sc", "msg": "[instagram/sc] posts failed (402) for @wsj"}
+{"ts": "2026-02-16T14:55:01.106695+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[instagram] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:55:01.142298+00:00", "level": "WARNING", "logger": "alekfi.swarm.tiktok_sc", "msg": "[tiktok/sc] search failed (402) for 'bear market'"}
+{"ts": "2026-02-16T14:55:01.144228+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[tiktok] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:55:01.187262+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[cftc_cot] scraped 1 items, 1 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:55:01.218672+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[options_flow] scraped 2 items, 0 dupes skipped, 2 new pushed (total: 2)"}
+{"ts": "2026-02-16T14:55:01.236473+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[earnings_calendar] scraped 7 items, 7 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:55:01.242213+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[dark_pool] scraped 9 items, 9 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:55:01.248747+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[polymarket] scraped 11 items, 11 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:55:01.767868+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[sec_13f] scraped 20 items, 20 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:55:02.448798+00:00", "level": "INFO", "logger": "alekfi.swarm.lobbyist", "msg": "Lobbyist scraper found 50 new filings"}
+{"ts": "2026-02-16T14:55:02.616981+00:00", "level": "INFO", "logger": "alekfi.swarm.crypto_onchain", "msg": "Crypto on-chain scraper produced 1 posts"}
+{"ts": "2026-02-16T14:55:02.627900+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[clinical_trials] scraped 30 items, 30 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:55:02.634434+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[crypto_onchain] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 1)"}
+{"ts": "2026-02-16T14:55:02.639750+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[fomc] scraped 35 items, 35 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:55:02.650738+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_pol] scraped 39 items, 39 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:55:03.559843+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[lobbyist] scraped 50 items, 50 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:55:03.793352+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[fda] scraped 85 items, 85 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:55:03.896927+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 143 items, 135 dupes skipped, 8 new pushed (total: 8)"}
+{"ts": "2026-02-16T14:55:04.927182+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 199 items, 0 dupes skipped, 199 new pushed (total: 199)"}
+{"ts": "2026-02-16T14:55:04.971762+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[commodities] scraped 5 items, 0 dupes skipped, 5 new pushed (total: 5)"}
+{"ts": "2026-02-16T14:55:05.042319+00:00", "level": "INFO", "logger": "alekfi.swarm.prediction_markets", "msg": "[prediction_markets] VELOCITY FLAG: kalshi KXGTAPRICE-70 \u2014 down +9.0pp in 1 hour"}
+{"ts": "2026-02-16T14:55:05.303631+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[congressional_trades] scraped 582 items, 582 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:55:05.866642+00:00", "level": "INFO", "logger": "alekfi.swarm.prediction_markets", "msg": "[prediction_markets] poll done: 405 tracked, 1 velocity flags"}
+{"ts": "2026-02-16T14:55:05.867524+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[prediction_markets] scraped 1 items, 1 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:55:07.694098+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[github_trending] scraped 26 items, 26 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:55:07.793364+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[appstore] scraped 60 items, 60 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:55:09.130795+00:00", "level": "INFO", "logger": "alekfi.swarm.sec_edgar_v2", "msg": "[sec_edgar_v2] scrape complete: 104 total filings (104 unique accessions tracked)"}
+{"ts": "2026-02-16T14:55:09.156018+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[sec_edgar] scraped 104 items, 104 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:55:13.465622+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 215 items, 215 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:55:17.970192+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 81 items, 81 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:55:28.468204+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 2/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T14:55:31.811436+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 192 items, 192 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:55:33.159960+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:55:33.752004+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_biz] scraped 201 items, 201 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:55:34.370921+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 55 posts, 12 bullish, 12 bearish"}
+{"ts": "2026-02-16T14:55:34.387622+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 55 items, 53 dupes skipped, 2 new pushed (total: 10)"}
+{"ts": "2026-02-16T14:55:35.152465+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 199)"}
+{"ts": "2026-02-16T14:55:46.816347+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 3/3 \u2014 scraping 18 feeds"}
+{"ts": "2026-02-16T14:55:48.387719+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:55:50.153563+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 253 items, 253 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:55:56.105920+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[federal_register] scraped 19 items, 19 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:55:58.532446+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[whale_tracker] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:56:01.814427+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[options_flow] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 2)"}
+{"ts": "2026-02-16T14:56:03.095821+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_pol] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:56:04.896415+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 57 posts, 24 bullish, 3 bearish"}
+{"ts": "2026-02-16T14:56:04.902702+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 57 items, 55 dupes skipped, 2 new pushed (total: 12)"}
+{"ts": "2026-02-16T14:56:05.154232+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 1/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T14:56:05.554983+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 199)"}
+{"ts": "2026-02-16T14:56:05.780056+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 3 items, 1 dupes skipped, 2 new pushed (total: 2)"}
+{"ts": "2026-02-16T14:56:10.860329+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 1)"}
+{"ts": "2026-02-16T14:56:14.242633+00:00", "level": "INFO", "logger": "alekfi.swarm.sec_edgar_v2", "msg": "[sec_edgar_v2] scrape complete: 0 total filings (104 unique accessions tracked)"}
+{"ts": "2026-02-16T14:56:14.242792+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[sec_edgar] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:56:19.552903+00:00", "level": "INFO", "logger": "alekfi.swarm.reddit_web", "msg": "[reddit] cycle 1 \u2014 collected 375 posts"}
+{"ts": "2026-02-16T14:56:19.609659+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[reddit] scraped 375 items, 374 dupes skipped, 1 new pushed (total: 1)"}
+{"ts": "2026-02-16T14:56:20.974905+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 2)"}
+{"ts": "2026-02-16T14:56:25.862956+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 2/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T14:56:29.175238+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 1)"}
+{"ts": "2026-02-16T14:56:33.863717+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_biz] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:56:35.498129+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 27 posts, 8 bullish, 4 bearish"}
+{"ts": "2026-02-16T14:56:35.503555+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 27 items, 26 dupes skipped, 1 new pushed (total: 13)"}
+{"ts": "2026-02-16T14:56:35.790642+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 199)"}
+{"ts": "2026-02-16T14:56:36.170537+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 2)"}
+{"ts": "2026-02-16T14:56:44.184307+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 3/3 \u2014 scraping 18 feeds"}
+{"ts": "2026-02-16T14:56:47.130434+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 1)"}
+{"ts": "2026-02-16T14:56:51.334794+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 2)"}
+{"ts": "2026-02-16T14:56:58.873446+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[whale_tracker] scraped 22 items, 0 dupes skipped, 22 new pushed (total: 22)"}
+{"ts": "2026-02-16T14:57:02.483930+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 1/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T14:57:02.689015+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[options_flow] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 2)"}
+{"ts": "2026-02-16T14:57:03.269310+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_pol] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:57:06.176402+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 199)"}
+{"ts": "2026-02-16T14:57:06.267512+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 33 posts, 12 bullish, 0 bearish"}
+{"ts": "2026-02-16T14:57:06.285763+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 33 items, 27 dupes skipped, 6 new pushed (total: 19)"}
+{"ts": "2026-02-16T14:57:06.602159+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 2)"}
+{"ts": "2026-02-16T14:57:09.065983+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 1)"}
+{"ts": "2026-02-16T14:57:19.183715+00:00", "level": "INFO", "logger": "alekfi.swarm.sec_edgar_v2", "msg": "[sec_edgar_v2] scrape complete: 0 total filings (104 unique accessions tracked)"}
+{"ts": "2026-02-16T14:57:19.183995+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[sec_edgar] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:57:21.777476+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 2)"}
+{"ts": "2026-02-16T14:57:24.069162+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 2/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T14:57:28.258357+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 1)"}
+{"ts": "2026-02-16T14:57:33.976557+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_biz] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:57:36.615220+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 199)"}
+{"ts": "2026-02-16T14:57:36.942508+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 2)"}
+{"ts": "2026-02-16T14:57:36.953761+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 68 posts, 24 bullish, 8 bearish"}
+{"ts": "2026-02-16T14:57:36.978157+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 68 items, 57 dupes skipped, 11 new pushed (total: 30)"}
+{"ts": "2026-02-16T14:57:43.265812+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 3/3 \u2014 scraping 18 feeds"}
+{"ts": "2026-02-16T14:57:46.258362+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 1)"}
+{"ts": "2026-02-16T14:57:52.155418+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 3)"}
+{"ts": "2026-02-16T14:57:59.117373+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[whale_tracker] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 22)"}
+{"ts": "2026-02-16T14:58:00.875442+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[blind] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:58:01.259287+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 1/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T14:58:03.346424+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[options_flow] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 2)"}
+{"ts": "2026-02-16T14:58:03.626564+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_pol] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:58:06.877314+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 199)"}
+{"ts": "2026-02-16T14:58:07.323776+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 3)"}
+{"ts": "2026-02-16T14:58:07.451851+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 27 posts, 9 bullish, 2 bearish"}
+{"ts": "2026-02-16T14:58:07.456558+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 27 items, 23 dupes skipped, 4 new pushed (total: 34)"}
+{"ts": "2026-02-16T14:58:13.232476+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 1)"}
+{"ts": "2026-02-16T14:58:22.539427+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 4)"}
+{"ts": "2026-02-16T14:58:23.545874+00:00", "level": "INFO", "logger": "alekfi.swarm.sec_edgar_v2", "msg": "[sec_edgar_v2] scrape complete: 0 total filings (104 unique accessions tracked)"}
+{"ts": "2026-02-16T14:58:23.546016+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[sec_edgar] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:58:28.238122+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 2/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T14:58:31.534896+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 1)"}
+{"ts": "2026-02-16T14:58:34.097475+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_biz] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:58:37.170252+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 199)"}
+{"ts": "2026-02-16T14:58:37.708988+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 4)"}
+{"ts": "2026-02-16T14:58:37.805519+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 17 posts, 5 bullish, 2 bearish"}
+{"ts": "2026-02-16T14:58:37.809556+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 17 items, 16 dupes skipped, 1 new pushed (total: 35)"}
+{"ts": "2026-02-16T14:58:46.541211+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 3/3 \u2014 scraping 18 feeds"}
+{"ts": "2026-02-16T14:58:49.671294+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 1)"}
+{"ts": "2026-02-16T14:58:52.939500+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 5)"}
+{"ts": "2026-02-16T14:58:58.369237+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[glassdoor] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:58:59.386951+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[whale_tracker] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 23)"}
+{"ts": "2026-02-16T14:59:02.701252+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[google_play] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:59:03.878277+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_pol] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:59:03.953384+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[options_flow] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 2)"}
+{"ts": "2026-02-16T14:59:04.672504+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 1/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T14:59:07.595392+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 199)"}
+{"ts": "2026-02-16T14:59:08.156644+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 5)"}
+{"ts": "2026-02-16T14:59:08.388693+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 23 posts, 10 bullish, 4 bearish"}
+{"ts": "2026-02-16T14:59:08.412889+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 23 items, 21 dupes skipped, 2 new pushed (total: 37)"}
+{"ts": "2026-02-16T14:59:10.342794+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 1)"}
+{"ts": "2026-02-16T14:59:23.327297+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 5)"}
+{"ts": "2026-02-16T14:59:25.344923+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 2/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T14:59:28.446886+00:00", "level": "INFO", "logger": "alekfi.swarm.sec_edgar_v2", "msg": "[sec_edgar_v2] scrape complete: 0 total filings (104 unique accessions tracked)"}
+{"ts": "2026-02-16T14:59:28.447023+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[sec_edgar] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:59:28.743433+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 2 items, 0 dupes skipped, 2 new pushed (total: 3)"}
+{"ts": "2026-02-16T14:59:34.218101+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_biz] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T14:59:37.844262+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 199)"}
+{"ts": "2026-02-16T14:59:38.499179+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 5)"}
+{"ts": "2026-02-16T14:59:38.940792+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 32 posts, 5 bullish, 1 bearish"}
+{"ts": "2026-02-16T14:59:38.949549+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 32 items, 28 dupes skipped, 4 new pushed (total: 41)"}
+{"ts": "2026-02-16T14:59:43.746090+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 3/3 \u2014 scraping 18 feeds"}
+{"ts": "2026-02-16T14:59:46.855729+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 3)"}
+{"ts": "2026-02-16T14:59:53.673945+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 5)"}
+{"ts": "2026-02-16T14:59:59.640470+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[whale_tracker] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 24)"}
+{"ts": "2026-02-16T15:00:01.860564+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 1/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T15:00:02.890487+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[clinical_trials] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:00:03.265717+00:00", "level": "INFO", "logger": "alekfi.swarm.crypto_onchain", "msg": "Crypto on-chain scraper produced 3 posts"}
+{"ts": "2026-02-16T15:00:03.269590+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[crypto_onchain] scraped 3 items, 0 dupes skipped, 3 new pushed (total: 4)"}
+{"ts": "2026-02-16T15:00:04.098793+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_pol] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:00:04.935732+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[options_flow] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 2)"}
+{"ts": "2026-02-16T15:00:06.132405+00:00", "level": "INFO", "logger": "alekfi.swarm.prediction_markets", "msg": "[prediction_markets] fetched 405 contracts (poly=30, kalshi=375)"}
+{"ts": "2026-02-16T15:00:06.396185+00:00", "level": "INFO", "logger": "alekfi.swarm.prediction_markets", "msg": "[prediction_markets] VELOCITY FLAG: kalshi KXGTAPRICE-70 \u2014 down +9.0pp in 1 hour"}
+{"ts": "2026-02-16T15:00:06.681840+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[commodities] scraped 5 items, 0 dupes skipped, 5 new pushed (total: 10)"}
+{"ts": "2026-02-16T15:00:06.776473+00:00", "level": "INFO", "logger": "alekfi.swarm.prediction_markets", "msg": "[prediction_markets] poll done: 405 tracked, 1 velocity flags"}
+{"ts": "2026-02-16T15:00:06.777648+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[prediction_markets] scraped 1 items, 1 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:00:08.101760+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 2 items, 0 dupes skipped, 2 new pushed (total: 201)"}
+{"ts": "2026-02-16T15:00:08.947468+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 6)"}
+{"ts": "2026-02-16T15:00:09.449889+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 1 posts, 0 bullish, 0 bearish"}
+{"ts": "2026-02-16T15:00:09.452486+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 42)"}
+{"ts": "2026-02-16T15:00:14.567733+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[github_trending] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:00:14.576972+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[appstore] scraped 60 items, 60 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:00:15.176136+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 4)"}
+{"ts": "2026-02-16T15:00:24.132952+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 6)"}
+{"ts": "2026-02-16T15:00:30.178238+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 2/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T15:00:33.579134+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 5)"}
+{"ts": "2026-02-16T15:00:34.104117+00:00", "level": "INFO", "logger": "alekfi.swarm.sec_edgar_v2", "msg": "[sec_edgar_v2] scrape complete: 0 total filings (104 unique accessions tracked)"}
+{"ts": "2026-02-16T15:00:34.104233+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[sec_edgar] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:00:34.317132+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_biz] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:00:38.371027+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 201)"}
+{"ts": "2026-02-16T15:00:39.348466+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 7)"}
+{"ts": "2026-02-16T15:00:39.964903+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 2 posts, 1 bullish, 0 bearish"}
+{"ts": "2026-02-16T15:00:39.967024+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 2 items, 0 dupes skipped, 2 new pushed (total: 44)"}
+{"ts": "2026-02-16T15:00:48.589154+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 3/3 \u2014 scraping 18 feeds"}
+{"ts": "2026-02-16T15:00:51.800856+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 5)"}
+{"ts": "2026-02-16T15:00:54.558310+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 7)"}
+{"ts": "2026-02-16T15:00:59.893161+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[whale_tracker] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 24)"}
+{"ts": "2026-02-16T15:01:04.227536+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_pol] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:01:05.553324+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[options_flow] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 2)"}
+{"ts": "2026-02-16T15:01:06.803086+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 1/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T15:01:08.640849+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 201)"}
+{"ts": "2026-02-16T15:01:09.919698+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 8)"}
+{"ts": "2026-02-16T15:01:10.476333+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 3 posts, 0 bullish, 1 bearish"}
+{"ts": "2026-02-16T15:01:10.478542+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 3 items, 0 dupes skipped, 3 new pushed (total: 47)"}
+{"ts": "2026-02-16T15:01:19.574615+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 6)"}
+{"ts": "2026-02-16T15:01:19.612294+00:00", "level": "INFO", "logger": "alekfi.swarm.reddit_web", "msg": "[reddit] cycle 2 \u2014 scraping 26 subreddits (tiers active: 1+2)"}
+{"ts": "2026-02-16T15:01:25.092063+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 8)"}
+{"ts": "2026-02-16T15:01:34.388430+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_biz] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:01:34.575844+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 2/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T15:01:37.538440+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 6)"}
+{"ts": "2026-02-16T15:01:39.021173+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 201)"}
+{"ts": "2026-02-16T15:01:39.141380+00:00", "level": "INFO", "logger": "alekfi.swarm.sec_edgar_v2", "msg": "[sec_edgar_v2] scrape complete: 0 total filings (104 unique accessions tracked)"}
+{"ts": "2026-02-16T15:01:39.141515+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[sec_edgar] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:01:40.303546+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 9)"}
+{"ts": "2026-02-16T15:01:40.961524+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 3 posts, 1 bullish, 0 bearish"}
+{"ts": "2026-02-16T15:01:40.963406+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 3 items, 0 dupes skipped, 3 new pushed (total: 50)"}
+{"ts": "2026-02-16T15:01:52.540932+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 3/3 \u2014 scraping 18 feeds"}
+{"ts": "2026-02-16T15:01:55.465984+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 9)"}
+{"ts": "2026-02-16T15:01:55.717106+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 3 items, 1 dupes skipped, 2 new pushed (total: 8)"}
+{"ts": "2026-02-16T15:02:00.145319+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[whale_tracker] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 24)"}
+{"ts": "2026-02-16T15:02:04.583327+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_pol] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:02:06.063745+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[options_flow] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 2)"}
+{"ts": "2026-02-16T15:02:09.421270+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 201)"}
+{"ts": "2026-02-16T15:02:10.694732+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 10)"}
+{"ts": "2026-02-16T15:02:10.718166+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 1/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T15:02:11.602774+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 4 posts, 1 bullish, 0 bearish"}
+{"ts": "2026-02-16T15:02:11.604682+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 4 items, 0 dupes skipped, 4 new pushed (total: 54)"}
+{"ts": "2026-02-16T15:02:16.892721+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 2 items, 2 dupes skipped, 0 new pushed (total: 8)"}
+{"ts": "2026-02-16T15:02:25.860821+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 10)"}
+{"ts": "2026-02-16T15:02:31.896501+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 2/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T15:02:34.587435+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_biz] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:02:35.769575+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 8)"}
+{"ts": "2026-02-16T15:02:39.664542+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 201)"}
+{"ts": "2026-02-16T15:02:41.797186+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 10)"}
+{"ts": "2026-02-16T15:02:42.015022+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 6 posts, 1 bullish, 1 bearish"}
+{"ts": "2026-02-16T15:02:42.017097+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 6 items, 0 dupes skipped, 6 new pushed (total: 60)"}
+{"ts": "2026-02-16T15:02:43.950184+00:00", "level": "INFO", "logger": "alekfi.swarm.sec_edgar_v2", "msg": "[sec_edgar_v2] scrape complete: 0 total filings (104 unique accessions tracked)"}
+{"ts": "2026-02-16T15:02:43.950294+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[sec_edgar] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:02:50.770786+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 3/3 \u2014 scraping 18 feeds"}
+{"ts": "2026-02-16T15:02:53.485777+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 2 items, 0 dupes skipped, 2 new pushed (total: 10)"}
+{"ts": "2026-02-16T15:02:56.963574+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 10)"}
+{"ts": "2026-02-16T15:03:00.431323+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[whale_tracker] scraped 2 items, 0 dupes skipped, 2 new pushed (total: 26)"}
+{"ts": "2026-02-16T15:03:04.708421+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_pol] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:03:06.613567+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[options_flow] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 2)"}
+{"ts": "2026-02-16T15:03:08.487200+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 1/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T15:03:09.951154+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 201)"}
+{"ts": "2026-02-16T15:03:12.125434+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 10)"}
+{"ts": "2026-02-16T15:03:12.557852+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 2 posts, 0 bullish, 0 bearish"}
+{"ts": "2026-02-16T15:03:12.559212+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 2 items, 0 dupes skipped, 2 new pushed (total: 62)"}
+{"ts": "2026-02-16T15:03:14.861232+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 10)"}
+{"ts": "2026-02-16T15:03:27.329612+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 11)"}
+{"ts": "2026-02-16T15:03:29.863148+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 2/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T15:03:33.516098+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 11)"}
+{"ts": "2026-02-16T15:03:34.664676+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_biz] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:03:38.989873+00:00", "level": "INFO", "logger": "alekfi.swarm.reddit_web", "msg": "[reddit] cycle 2 \u2014 collected 279 posts"}
+{"ts": "2026-02-16T15:03:39.022494+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[reddit] scraped 279 items, 272 dupes skipped, 7 new pushed (total: 8)"}
+{"ts": "2026-02-16T15:03:40.800276+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 201)"}
+{"ts": "2026-02-16T15:03:42.497619+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 11)"}
+{"ts": "2026-02-16T15:03:43.081841+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 7 posts, 1 bullish, 1 bearish"}
+{"ts": "2026-02-16T15:03:43.084139+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 7 items, 0 dupes skipped, 7 new pushed (total: 69)"}
+{"ts": "2026-02-16T15:03:48.366488+00:00", "level": "INFO", "logger": "alekfi.swarm.sec_edgar_v2", "msg": "[sec_edgar_v2] scrape complete: 0 total filings (104 unique accessions tracked)"}
+{"ts": "2026-02-16T15:03:48.366625+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[sec_edgar] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:03:48.517024+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 3/3 \u2014 scraping 18 feeds"}
+{"ts": "2026-02-16T15:03:51.525929+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 12)"}
+{"ts": "2026-02-16T15:03:57.700329+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 12)"}
+{"ts": "2026-02-16T15:03:59.233373+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[amazon_reviews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:04:00.670552+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[whale_tracker] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 27)"}
+{"ts": "2026-02-16T15:04:04.806437+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_pol] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:04:06.528622+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 1/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T15:04:07.175401+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[options_flow] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 2)"}
+{"ts": "2026-02-16T15:04:11.199536+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 201)"}
+{"ts": "2026-02-16T15:04:12.496111+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 12)"}
+{"ts": "2026-02-16T15:04:12.867846+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 12)"}
+{"ts": "2026-02-16T15:04:13.731973+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 1 posts, 0 bullish, 0 bearish"}
+{"ts": "2026-02-16T15:04:13.733145+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 70)"}
+{"ts": "2026-02-16T15:04:27.512196+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 2/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T15:04:28.081998+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 13)"}
+{"ts": "2026-02-16T15:04:31.018564+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 13)"}
+{"ts": "2026-02-16T15:04:34.750311+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_biz] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:04:41.434465+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 201)"}
+{"ts": "2026-02-16T15:04:43.252891+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 13)"}
+{"ts": "2026-02-16T15:04:44.173899+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 3 posts, 0 bullish, 0 bearish"}
+{"ts": "2026-02-16T15:04:44.175411+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 3 items, 0 dupes skipped, 3 new pushed (total: 73)"}
+{"ts": "2026-02-16T15:04:46.021591+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 3/3 \u2014 scraping 18 feeds"}
+{"ts": "2026-02-16T15:04:48.845129+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 13)"}
+{"ts": "2026-02-16T15:04:53.866829+00:00", "level": "INFO", "logger": "alekfi.swarm.sec_edgar_v2", "msg": "[sec_edgar_v2] scrape complete: 0 total filings (104 unique accessions tracked)"}
+{"ts": "2026-02-16T15:04:53.866955+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[sec_edgar] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:04:57.624825+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[patents] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:04:58.456339+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 14)"}
+{"ts": "2026-02-16T15:05:00.977948+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[whale_tracker] scraped 2 items, 0 dupes skipped, 2 new pushed (total: 29)"}
+{"ts": "2026-02-16T15:05:01.107986+00:00", "level": "INFO", "logger": "alekfi.swarm.instagram_sc", "msg": "[instagram/sc] scraping 'brand_monitoring' profiles: ['nike', 'meta']"}
+{"ts": "2026-02-16T15:05:01.152883+00:00", "level": "INFO", "logger": "alekfi.swarm.tiktok_sc", "msg": "[tiktok/sc] scraping 'consumer_behavior' keywords: ['brand quality decline', 'subscription cancel']"}
+{"ts": "2026-02-16T15:05:01.543343+00:00", "level": "WARNING", "logger": "alekfi.swarm.instagram_sc", "msg": "[instagram/sc] posts failed (402) for @nike"}
+{"ts": "2026-02-16T15:05:01.580567+00:00", "level": "WARNING", "logger": "alekfi.swarm.tiktok_sc", "msg": "[tiktok/sc] search failed (402) for 'brand quality decline'"}
+{"ts": "2026-02-16T15:05:01.823558+00:00", "level": "WARNING", "logger": "alekfi.swarm.tiktok_sc", "msg": "[tiktok/sc] search failed (402) for 'subscription cancel'"}
+{"ts": "2026-02-16T15:05:01.824128+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[tiktok] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:05:02.531773+00:00", "level": "WARNING", "logger": "alekfi.swarm.instagram_sc", "msg": "[instagram/sc] posts failed (402) for @meta"}
+{"ts": "2026-02-16T15:05:02.532281+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[instagram] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:05:03.083076+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[clinical_trials] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:05:03.706266+00:00", "level": "INFO", "logger": "alekfi.swarm.crypto_onchain", "msg": "Crypto on-chain scraper produced 3 posts"}
+{"ts": "2026-02-16T15:05:03.710597+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[crypto_onchain] scraped 3 items, 0 dupes skipped, 3 new pushed (total: 7)"}
+{"ts": "2026-02-16T15:05:03.846460+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 1/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T15:05:04.932911+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_pol] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:05:06.119167+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[fda] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:05:07.027242+00:00", "level": "INFO", "logger": "alekfi.swarm.prediction_markets", "msg": "[prediction_markets] fetched 405 contracts (poly=30, kalshi=375)"}
+{"ts": "2026-02-16T15:05:07.099466+00:00", "level": "INFO", "logger": "alekfi.swarm.prediction_markets", "msg": "[prediction_markets] VELOCITY FLAG: kalshi KXGTAPRICE-70 \u2014 down +10.0pp in 1 hour"}
+{"ts": "2026-02-16T15:05:07.150594+00:00", "level": "INFO", "logger": "alekfi.swarm.prediction_markets", "msg": "[prediction_markets] VELOCITY FLAG: kalshi KXUKPARTY-29-L \u2014 up +10.0pp in 6 hours"}
+{"ts": "2026-02-16T15:05:07.220978+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[commodities] scraped 5 items, 0 dupes skipped, 5 new pushed (total: 15)"}
+{"ts": "2026-02-16T15:05:07.553393+00:00", "level": "INFO", "logger": "alekfi.swarm.prediction_markets", "msg": "[prediction_markets] poll done: 405 tracked, 2 velocity flags"}
+{"ts": "2026-02-16T15:05:07.554161+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[prediction_markets] scraped 2 items, 2 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:05:07.687680+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[options_flow] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 2)"}
+{"ts": "2026-02-16T15:05:09.756371+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 13)"}
+{"ts": "2026-02-16T15:05:11.659225+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 201)"}
+{"ts": "2026-02-16T15:05:13.620056+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 14)"}
+{"ts": "2026-02-16T15:05:14.925159+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 3 posts, 1 bullish, 0 bearish"}
+{"ts": "2026-02-16T15:05:14.926724+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 3 items, 0 dupes skipped, 3 new pushed (total: 76)"}
+{"ts": "2026-02-16T15:05:18.119896+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[appstore] scraped 60 items, 60 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:05:22.231803+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[github_trending] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:05:24.757471+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 2/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T15:05:28.381185+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 13)"}
+{"ts": "2026-02-16T15:05:28.804933+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 14)"}
+{"ts": "2026-02-16T15:05:34.832463+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_biz] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:05:41.903337+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 201)"}
+{"ts": "2026-02-16T15:05:43.383265+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 3/3 \u2014 scraping 18 feeds"}
+{"ts": "2026-02-16T15:05:43.975288+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 14)"}
+{"ts": "2026-02-16T15:05:45.487911+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 4 posts, 0 bullish, 1 bearish"}
+{"ts": "2026-02-16T15:05:45.489494+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 4 items, 0 dupes skipped, 4 new pushed (total: 80)"}
+{"ts": "2026-02-16T15:05:46.578140+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 13)"}
+{"ts": "2026-02-16T15:05:58.279628+00:00", "level": "INFO", "logger": "alekfi.swarm.sec_edgar_v2", "msg": "[sec_edgar_v2] scrape complete: 0 total filings (104 unique accessions tracked)"}
+{"ts": "2026-02-16T15:05:58.279738+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[sec_edgar] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:05:59.154376+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 14)"}
+{"ts": "2026-02-16T15:06:01.205076+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[whale_tracker] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 29)"}
+{"ts": "2026-02-16T15:06:01.579912+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 1/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T15:06:05.027347+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_pol] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:06:07.999816+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 13)"}
+{"ts": "2026-02-16T15:06:08.130544+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[options_flow] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 2)"}
+{"ts": "2026-02-16T15:06:12.278381+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 201)"}
+{"ts": "2026-02-16T15:06:14.408209+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 15)"}
+{"ts": "2026-02-16T15:06:16.309257+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 4 posts, 2 bullish, 0 bearish"}
+{"ts": "2026-02-16T15:06:16.311058+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 4 items, 0 dupes skipped, 4 new pushed (total: 84)"}
+{"ts": "2026-02-16T15:06:23.007090+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 2/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T15:06:26.122148+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 13)"}
+{"ts": "2026-02-16T15:06:29.575450+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 15)"}
+{"ts": "2026-02-16T15:06:34.966986+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_biz] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:06:41.129605+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 3/3 \u2014 scraping 18 feeds"}
+{"ts": "2026-02-16T15:06:42.557541+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 202)"}
+{"ts": "2026-02-16T15:06:44.314416+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 13)"}
+{"ts": "2026-02-16T15:06:44.776201+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 16)"}
+{"ts": "2026-02-16T15:06:46.861999+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 3 posts, 2 bullish, 0 bearish"}
+{"ts": "2026-02-16T15:06:46.863551+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 3 items, 0 dupes skipped, 3 new pushed (total: 87)"}
+{"ts": "2026-02-16T15:06:56.220742+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[federal_register] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:06:59.315701+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 1/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T15:06:59.951733+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 16)"}
+{"ts": "2026-02-16T15:07:01.594341+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[whale_tracker] scraped 2 items, 0 dupes skipped, 2 new pushed (total: 31)"}
+{"ts": "2026-02-16T15:07:05.127578+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_pol] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:07:06.569921+00:00", "level": "INFO", "logger": "alekfi.swarm.sec_edgar_v2", "msg": "[sec_edgar_v2] scrape complete: 0 total filings (104 unique accessions tracked)"}
+{"ts": "2026-02-16T15:07:06.570054+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[sec_edgar] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:07:08.694682+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[options_flow] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 2)"}
+{"ts": "2026-02-16T15:07:10.696271+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 2 items, 0 dupes skipped, 2 new pushed (total: 15)"}
+{"ts": "2026-02-16T15:07:12.814141+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 202)"}
+{"ts": "2026-02-16T15:07:15.115891+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 16)"}
+{"ts": "2026-02-16T15:07:17.275969+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 6 posts, 3 bullish, 0 bearish"}
+{"ts": "2026-02-16T15:07:17.277880+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 6 items, 0 dupes skipped, 6 new pushed (total: 93)"}
+{"ts": "2026-02-16T15:07:25.706652+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 2/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T15:07:29.024699+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 15)"}
+{"ts": "2026-02-16T15:07:30.292768+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 16)"}
+{"ts": "2026-02-16T15:07:35.340503+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_biz] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 1)"}
+{"ts": "2026-02-16T15:07:43.048526+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 202)"}
+{"ts": "2026-02-16T15:07:44.026869+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 3/3 \u2014 scraping 18 feeds"}
+{"ts": "2026-02-16T15:07:45.513737+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 16)"}
+{"ts": "2026-02-16T15:07:47.657467+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 15)"}
+{"ts": "2026-02-16T15:07:47.809866+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 3 posts, 0 bullish, 0 bearish"}
+{"ts": "2026-02-16T15:07:47.811499+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 3 items, 0 dupes skipped, 3 new pushed (total: 96)"}
+{"ts": "2026-02-16T15:08:00.688791+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 16)"}
+{"ts": "2026-02-16T15:08:01.864539+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[whale_tracker] scraped 2 items, 0 dupes skipped, 2 new pushed (total: 33)"}
+{"ts": "2026-02-16T15:08:02.659250+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 1/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T15:08:04.024139+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[google_play] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:08:05.339212+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_pol] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:08:09.052508+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 15)"}
+{"ts": "2026-02-16T15:08:09.178918+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[options_flow] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 2)"}
+{"ts": "2026-02-16T15:08:13.437529+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 202)"}
+{"ts": "2026-02-16T15:08:13.798257+00:00", "level": "INFO", "logger": "alekfi.swarm.sec_edgar_v2", "msg": "[sec_edgar_v2] scrape complete: 0 total filings (104 unique accessions tracked)"}
+{"ts": "2026-02-16T15:08:13.798392+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[sec_edgar] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:08:15.998234+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 16)"}
+{"ts": "2026-02-16T15:08:18.306879+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 1 posts, 0 bullish, 0 bearish"}
+{"ts": "2026-02-16T15:08:18.308245+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 97)"}
+{"ts": "2026-02-16T15:08:24.054983+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 2/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T15:08:27.646968+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 15)"}
+{"ts": "2026-02-16T15:08:31.165726+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 16)"}
+{"ts": "2026-02-16T15:08:35.467317+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_biz] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 1)"}
+{"ts": "2026-02-16T15:08:39.027673+00:00", "level": "INFO", "logger": "alekfi.swarm.reddit_web", "msg": "[reddit] cycle 3 \u2014 scraping 47 subreddits (tiers active: 1+3-4)"}
+{"ts": "2026-02-16T15:08:42.651173+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 3/3 \u2014 scraping 18 feeds"}
+{"ts": "2026-02-16T15:08:43.752890+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 202)"}
+{"ts": "2026-02-16T15:08:45.539296+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 15)"}
+{"ts": "2026-02-16T15:08:46.382757+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 16)"}
+{"ts": "2026-02-16T15:08:48.903909+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 6 posts, 1 bullish, 0 bearish"}
+{"ts": "2026-02-16T15:08:48.905754+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 6 items, 0 dupes skipped, 6 new pushed (total: 103)"}
+{"ts": "2026-02-16T15:09:00.541207+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 1/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T15:09:01.611454+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 16)"}
+{"ts": "2026-02-16T15:09:02.180834+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[whale_tracker] scraped 3 items, 0 dupes skipped, 3 new pushed (total: 36)"}
+{"ts": "2026-02-16T15:09:05.467939+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_pol] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 1)"}
+{"ts": "2026-02-16T15:09:09.852283+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[options_flow] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 2)"}
+{"ts": "2026-02-16T15:09:12.941583+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 15)"}
+{"ts": "2026-02-16T15:09:13.979532+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 202)"}
+{"ts": "2026-02-16T15:09:16.789761+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 16)"}
+{"ts": "2026-02-16T15:09:18.158477+00:00", "level": "INFO", "logger": "alekfi.swarm.sec_edgar_v2", "msg": "[sec_edgar_v2] scrape complete: 0 total filings (104 unique accessions tracked)"}
+{"ts": "2026-02-16T15:09:18.158585+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[sec_edgar] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:09:19.406536+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 7 posts, 3 bullish, 1 bearish"}
+{"ts": "2026-02-16T15:09:19.409540+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 7 items, 0 dupes skipped, 7 new pushed (total: 110)"}
+{"ts": "2026-02-16T15:09:27.942865+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 2/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T15:09:31.416307+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 15)"}
+{"ts": "2026-02-16T15:09:32.059165+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 17)"}
+{"ts": "2026-02-16T15:09:35.577328+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_biz] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 1)"}
+{"ts": "2026-02-16T15:09:44.204968+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 202)"}
+{"ts": "2026-02-16T15:09:46.419615+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 3/3 \u2014 scraping 18 feeds"}
+{"ts": "2026-02-16T15:09:47.233952+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 17)"}
+{"ts": "2026-02-16T15:09:49.471492+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 15)"}
+{"ts": "2026-02-16T15:09:49.833242+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 2 posts, 0 bullish, 0 bearish"}
+{"ts": "2026-02-16T15:09:49.834932+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 2 items, 0 dupes skipped, 2 new pushed (total: 112)"}
+{"ts": "2026-02-16T15:10:00.748345+00:00", "level": "INFO", "logger": "alekfi.swarm.linkedin_sc", "msg": "[linkedin/sc] scraping company: Apple"}
+{"ts": "2026-02-16T15:10:00.755999+00:00", "level": "INFO", "logger": "alekfi.swarm.facebook_sc", "msg": "[facebook/sc] scraping page: nvidia (brand_sentiment)"}
+{"ts": "2026-02-16T15:10:01.172221+00:00", "level": "WARNING", "logger": "alekfi.swarm.linkedin_sc", "msg": "[linkedin/sc] company scrape failed (402) for Apple"}
+{"ts": "2026-02-16T15:10:01.172560+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[linkedin] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:10:01.173309+00:00", "level": "WARNING", "logger": "alekfi.swarm.facebook_sc", "msg": "[facebook/sc] page scrape failed (402) for nvidia"}
+{"ts": "2026-02-16T15:10:01.173475+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[facebook] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:10:01.339839+00:00", "level": "INFO", "logger": "alekfi.swarm.polymarket", "msg": "Polymarket scraper found 0 relevant markets"}
+{"ts": "2026-02-16T15:10:01.340717+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[polymarket] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:10:02.433101+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 17)"}
+{"ts": "2026-02-16T15:10:02.516246+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[whale_tracker] scraped 4 items, 0 dupes skipped, 4 new pushed (total: 40)"}
+{"ts": "2026-02-16T15:10:03.261775+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[clinical_trials] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:10:04.151921+00:00", "level": "INFO", "logger": "alekfi.swarm.crypto_onchain", "msg": "Crypto on-chain scraper produced 2 posts"}
+{"ts": "2026-02-16T15:10:04.154590+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[crypto_onchain] scraped 2 items, 0 dupes skipped, 2 new pushed (total: 9)"}
+{"ts": "2026-02-16T15:10:04.472394+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 1/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T15:10:05.908786+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_pol] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 2)"}
+{"ts": "2026-02-16T15:10:07.791858+00:00", "level": "INFO", "logger": "alekfi.swarm.prediction_markets", "msg": "[prediction_markets] fetched 405 contracts (poly=30, kalshi=375)"}
+{"ts": "2026-02-16T15:10:07.864240+00:00", "level": "INFO", "logger": "alekfi.swarm.prediction_markets", "msg": "[prediction_markets] VELOCITY FLAG: kalshi KXGTAPRICE-70 \u2014 down +7.0pp in 1 hour"}
+{"ts": "2026-02-16T15:10:07.884999+00:00", "level": "INFO", "logger": "alekfi.swarm.prediction_markets", "msg": "[prediction_markets] VELOCITY FLAG: kalshi KXUKPARTY-29-L \u2014 up +10.0pp in 6 hours"}
+{"ts": "2026-02-16T15:10:07.998594+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[commodities] scraped 5 items, 0 dupes skipped, 5 new pushed (total: 20)"}
+{"ts": "2026-02-16T15:10:08.084418+00:00", "level": "INFO", "logger": "alekfi.swarm.prediction_markets", "msg": "[prediction_markets] poll done: 405 tracked, 2 velocity flags"}
+{"ts": "2026-02-16T15:10:08.085301+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[prediction_markets] scraped 2 items, 2 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:10:10.045336+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 15)"}
+{"ts": "2026-02-16T15:10:10.366556+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[options_flow] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 2)"}
+{"ts": "2026-02-16T15:10:14.453979+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 202)"}
+{"ts": "2026-02-16T15:10:17.607337+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 17)"}
+{"ts": "2026-02-16T15:10:20.373419+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 4 posts, 0 bullish, 2 bearish"}
+{"ts": "2026-02-16T15:10:20.374694+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 4 items, 0 dupes skipped, 4 new pushed (total: 116)"}
+{"ts": "2026-02-16T15:10:21.849128+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[appstore] scraped 60 items, 60 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:10:23.495421+00:00", "level": "INFO", "logger": "alekfi.swarm.sec_edgar_v2", "msg": "[sec_edgar_v2] scrape complete: 0 total filings (104 unique accessions tracked)"}
+{"ts": "2026-02-16T15:10:23.495538+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[sec_edgar] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:10:25.045999+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 2/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T15:10:28.941903+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 15)"}
+{"ts": "2026-02-16T15:10:29.316299+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[github_trending] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:10:32.915485+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 2 items, 0 dupes skipped, 2 new pushed (total: 19)"}
+{"ts": "2026-02-16T15:10:35.660610+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_biz] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 1)"}
+{"ts": "2026-02-16T15:10:43.943966+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 3/3 \u2014 scraping 18 feeds"}
+{"ts": "2026-02-16T15:10:44.709467+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 202)"}
+{"ts": "2026-02-16T15:10:46.846538+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 2 items, 0 dupes skipped, 2 new pushed (total: 17)"}
+{"ts": "2026-02-16T15:10:48.087190+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 19)"}
+{"ts": "2026-02-16T15:10:50.960500+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 2 posts, 0 bullish, 0 bearish"}
+{"ts": "2026-02-16T15:10:50.961670+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 2 items, 0 dupes skipped, 2 new pushed (total: 118)"}
+{"ts": "2026-02-16T15:11:00.956910+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[blind] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:11:01.848245+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 1/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T15:11:02.770167+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[whale_tracker] scraped 1 items, 0 dupes skipped, 1 new pushed (total: 41)"}
+{"ts": "2026-02-16T15:11:03.359576+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 19)"}
+{"ts": "2026-02-16T15:11:06.104292+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_pol] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 2)"}
+{"ts": "2026-02-16T15:11:07.879332+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 17)"}
+{"ts": "2026-02-16T15:11:10.824090+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[options_flow] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 2)"}
+{"ts": "2026-02-16T15:11:14.955461+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 202)"}
+{"ts": "2026-02-16T15:11:18.536488+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 19)"}
+{"ts": "2026-02-16T15:11:21.541523+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 7 posts, 3 bullish, 0 bearish"}
+{"ts": "2026-02-16T15:11:21.544088+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 7 items, 0 dupes skipped, 7 new pushed (total: 125)"}
+{"ts": "2026-02-16T15:11:22.881747+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 2/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T15:11:26.687613+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 17)"}
+{"ts": "2026-02-16T15:11:28.476497+00:00", "level": "INFO", "logger": "alekfi.swarm.sec_edgar_v2", "msg": "[sec_edgar_v2] scrape complete: 0 total filings (104 unique accessions tracked)"}
+{"ts": "2026-02-16T15:11:28.476628+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[sec_edgar] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 0)"}
+{"ts": "2026-02-16T15:11:33.716650+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 19)"}
+{"ts": "2026-02-16T15:11:35.759573+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_biz] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 1)"}
+{"ts": "2026-02-16T15:11:41.688520+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 3/3 \u2014 scraping 18 feeds"}
+{"ts": "2026-02-16T15:11:44.799829+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 17)"}
+{"ts": "2026-02-16T15:11:45.309159+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[finviz_news] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 202)"}
+{"ts": "2026-02-16T15:11:48.992457+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 2 items, 0 dupes skipped, 2 new pushed (total: 21)"}
+{"ts": "2026-02-16T15:11:51.988965+00:00", "level": "INFO", "logger": "alekfi.swarm.stocktwits", "msg": "[stocktwits] batch: 15 posts, 1 bullish, 0 bearish"}
+{"ts": "2026-02-16T15:11:51.993486+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[stocktwits] scraped 15 items, 0 dupes skipped, 15 new pushed (total: 140)"}
+{"ts": "2026-02-16T15:11:59.801586+00:00", "level": "INFO", "logger": "alekfi.swarm.news_rss", "msg": "[news_rss] batch 1/3 \u2014 scraping 19 feeds"}
+{"ts": "2026-02-16T15:12:03.244870+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[whale_tracker] scraped 4 items, 0 dupes skipped, 4 new pushed (total: 45)"}
+{"ts": "2026-02-16T15:12:04.157290+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[hackernews] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 21)"}
+{"ts": "2026-02-16T15:12:05.813406+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[news_rss] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 17)"}
+{"ts": "2026-02-16T15:12:06.208749+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[4chan_pol] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 2)"}
+{"ts": "2026-02-16T15:12:11.227738+00:00", "level": "INFO", "logger": "alekfi.swarm.base", "msg": "[options_flow] scraped 0 items, 0 dupes skipped, 0 new pushed (total: 2)"}

@@ -1,0 +1,53 @@
+{
+  "since": "2026-01-17T15:12:14.247167+00:00",
+  "rows": 594,
+  "horizons": {
+    "1h": {
+      "count": 25,
+      "hit_rate": 0.04,
+      "brier": 0.03889,
+      "precision_at_k": {
+        "p@5": 0.0,
+        "p@10": 0.1,
+        "p@20": 0.05
+      },
+      "strict_count": 7,
+      "non_strict_count": 18,
+      "strict_p@10": 0.0,
+      "non_strict_p@10": 0.1,
+      "ablation_verification_hit_rate": {
+        "with_verification": 0.0,
+        "without_verification": 0.0556
+      }
+    },
+    "4h": {
+      "count": 10,
+      "hit_rate": 0.1,
+      "brier": 0.08667,
+      "precision_at_k": {
+        "p@5": 0.2,
+        "p@10": 0.1,
+        "p@20": 0.1
+      },
+      "strict_count": 3,
+      "non_strict_count": 7,
+      "strict_p@10": 0.0,
+      "non_strict_p@10": 0.1429,
+      "ablation_verification_hit_rate": {
+        "with_verification": 0.0,
+        "without_verification": 0.1667
+      }
+    },
+    "1d": {
+      "count": 0
+    },
+    "3d": {
+      "count": 0
+    },
+    "7d": {
+      "count": 0
+    }
+  },
+  "strict_vs_nonstrict": {},
+  "ablation": {}
+}
