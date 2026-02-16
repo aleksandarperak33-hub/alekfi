@@ -32,7 +32,7 @@ services:
   swarm:
     build: .
     restart: unless-stopped
-    command: python -m open_claw.main --swarm
+    command: python -m alekfi.main --swarm
     depends_on:
       redis:
         condition: service_healthy
@@ -42,7 +42,7 @@ services:
   gatekeeper:
     build: .
     restart: unless-stopped
-    command: python -m open_claw.main --gatekeeper
+    command: python -m alekfi.main --gatekeeper
     depends_on:
       redis:
         condition: service_healthy
@@ -54,7 +54,7 @@ services:
   brain:
     build: .
     restart: unless-stopped
-    command: python -m open_claw.main --brain
+    command: python -m alekfi.main --brain
     depends_on:
       postgres:
         condition: service_healthy
@@ -64,7 +64,7 @@ services:
   api:
     build: .
     restart: unless-stopped
-    command: python -m open_claw.main --server
+    command: python -m alekfi.main --server
     ports:
       - "8000:8000"
     depends_on:

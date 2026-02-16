@@ -11,4 +11,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD ["python", "-m", "open_claw.main", "--all"]
+CMD ["python", "-m", "alekfi.main", "--all"]
