@@ -80,6 +80,24 @@ class NormalizedSymbol:
     valid: bool
 
 
+@dataclass
+class MarketDataSnapshot:
+    symbol: str
+    last_price: float | None
+    asof: str
+    volume: float | None
+    dollar_volume: float | None
+    ret_1d: float | None
+    ret_5d: float | None
+    atr_14: float | None
+    spread_bps_est: float
+    quality_flags: list[str]
+    provider_used: str | None
+    fallback_chain: list[str]
+    cache_hit: bool
+    data_completeness: float
+
+
 def _utcnow() -> datetime:
     return datetime.now(timezone.utc)
 
@@ -220,6 +238,100 @@ class MarketDataGateway:
 
         await asyncio.gather(*[_one(s) for s in symbols])
         return out
+
+    async def get_market_data(
+        self,
+        symbol: str,
+        *,
+        fail_closed: bool = False,
+    ) -> MarketDataSnapshot:
+        """Canonical market-data contract for scoring, tradability, and labeling.
+
+        Fields:
+        - last_price, asof, volume, dollar_volume
+        - ret_1d, ret_5d, atr_14
+        - spread_bps_est
+        - quality flags + provider metadata
+        """
+        quote = await self.get_quote(symbol, fail_closed=fail_closed)
+        if not quote:
+            now_iso = _utcnow().isoformat()
+            return MarketDataSnapshot(
+                symbol=symbol,
+                last_price=None,
+                asof=now_iso,
+                volume=None,
+                dollar_volume=None,
+                ret_1d=None,
+                ret_5d=None,
+                atr_14=None,
+                spread_bps_est=60.0,
+                quality_flags=["NO_DATA"],
+                provider_used=None,
+                fallback_chain=[],
+                cache_hit=False,
+                data_completeness=0.0,
+            )
+
+        meta = quote.get("meta") or {}
+        qf = list(meta.get("quality_flags") or [])
+        provider = meta.get("provider_used")
+        asof = str(meta.get("fetched_at") or _utcnow().isoformat())
+        price = self._safe_float(quote.get("price"), default=None)
+        volume = self._safe_float(quote.get("volume"), default=None)
+        ret_1d = self._safe_float(quote.get("change_1d"), default=None)
+        ret_5d = self._safe_float(quote.get("change_5d"), default=None)
+        completeness = self._safe_float(meta.get("data_completeness"), default=1.0)
+
+        # Fill missing return fields from daily OHLCV deterministically.
+        rows = []
+        if ret_1d is None or ret_5d is None or price is None:
+            ohlcv = await self.get_ohlcv(symbol, period="1mo", interval="1d", min_points=6, fail_closed=False)
+            rows = ohlcv.get("rows") or []
+            if rows:
+                last_close = self._safe_float(rows[-1].get("close"), default=None)
+                prev_close = self._safe_float(rows[-2].get("close"), default=None) if len(rows) >= 2 else None
+                close_5 = self._safe_float(rows[-6].get("close"), default=None) if len(rows) >= 6 else None
+                if price is None and last_close is not None:
+                    price = last_close
+                if ret_1d is None and last_close is not None and prev_close and prev_close > 0:
+                    ret_1d = round(((last_close - prev_close) / prev_close) * 100.0, 4)
+                    qf.append("RET_1D_FROM_OHLCV")
+                if ret_5d is None and last_close is not None and close_5 and close_5 > 0:
+                    ret_5d = round(((last_close - close_5) / close_5) * 100.0, 4)
+                    qf.append("RET_5D_FROM_OHLCV")
+
+        # ATR(14) from daily OHLCV.
+        atr_14 = None
+        if not rows:
+            ohlcv = await self.get_ohlcv(symbol, period="3mo", interval="1d", min_points=15, fail_closed=False)
+            rows = ohlcv.get("rows") or []
+        atr_14 = self._atr14_from_rows(rows)
+        if atr_14 is None:
+            qf.append("ATR14_UNAVAILABLE")
+
+        dollar_volume = None
+        if price is not None and volume is not None and price > 0 and volume > 0:
+            dollar_volume = float(price) * float(volume)
+
+        spread_bps = self._spread_bps_est(price=price, dollar_volume=dollar_volume)
+
+        return MarketDataSnapshot(
+            symbol=str(quote.get("symbol") or symbol),
+            last_price=round(float(price), 4) if price is not None else None,
+            asof=asof,
+            volume=float(volume) if volume is not None else None,
+            dollar_volume=round(float(dollar_volume), 2) if dollar_volume is not None else None,
+            ret_1d=round(float(ret_1d), 4) if ret_1d is not None else None,
+            ret_5d=round(float(ret_5d), 4) if ret_5d is not None else None,
+            atr_14=round(float(atr_14), 4) if atr_14 is not None else None,
+            spread_bps_est=round(float(spread_bps), 2),
+            quality_flags=sorted({str(x) for x in qf if x}),
+            provider_used=provider,
+            fallback_chain=list(meta.get("fallback_chain") or []),
+            cache_hit=bool(meta.get("cache_hit", False)),
+            data_completeness=round(float(completeness), 4),
+        )
 
     async def get_quote(self, symbol: str, *, fail_closed: bool = False) -> dict[str, Any] | None:
         norm = self.normalize_symbol(symbol)
@@ -398,11 +510,23 @@ class MarketDataGateway:
         fallback_chain: list[str] = []
         quality_flags: list[str] = []
 
-        # For intraday intervals we currently rely on yfinance only.
+        # Intraday provider is intentionally disabled until a non-yfinance
+        # intraday source is configured (avoid silent contamination).
         if interval != "1d":
-            providers = ["yfinance"]
-        else:
-            providers = ["finnhub", "stooq", "yfinance"]
+            return {
+                "symbol": norm.symbol,
+                "rows": [],
+                "meta": {
+                    "provider_used": None,
+                    "fallback_chain": [],
+                    "quality_flags": ["INTRADAY_UNSUPPORTED_NO_PROVIDER"],
+                    "data_completeness": 0.0,
+                    "cache_hit": False,
+                    "fetched_at": _utcnow().isoformat(),
+                },
+            }
+
+        providers = ["finnhub", "stooq", "yfinance"]
 
         for provider in providers:
             if not await self._provider_available(provider):
@@ -898,6 +1022,45 @@ class MarketDataGateway:
             await self._redis.setex(key, ttl, json.dumps(payload, default=str))
         except Exception:
             pass
+
+    @staticmethod
+    def _atr14_from_rows(rows: list[dict[str, Any]]) -> float | None:
+        if not rows or len(rows) < 15:
+            return None
+        trs: list[float] = []
+        prev_close = None
+        for r in rows[-60:]:
+            high = MarketDataGateway._safe_float(r.get("high"), default=None)
+            low = MarketDataGateway._safe_float(r.get("low"), default=None)
+            close = MarketDataGateway._safe_float(r.get("close"), default=None)
+            if high is None or low is None:
+                continue
+            if prev_close is None:
+                tr = high - low
+            else:
+                tr = max(high - low, abs(high - prev_close), abs(low - prev_close))
+            if tr >= 0:
+                trs.append(float(tr))
+            prev_close = close if close is not None else prev_close
+        if len(trs) < 14:
+            return None
+        return sum(trs[-14:]) / 14.0
+
+    @staticmethod
+    def _spread_bps_est(*, price: float | None, dollar_volume: float | None) -> float:
+        if price is None or price <= 0:
+            return 60.0
+        if dollar_volume is None:
+            return 40.0
+        if dollar_volume >= 250_000_000:
+            return 2.0
+        if dollar_volume >= 50_000_000:
+            return 5.0
+        if dollar_volume >= 10_000_000:
+            return 12.0
+        if dollar_volume >= 3_000_000:
+            return 25.0
+        return 60.0
 
     @staticmethod
     def _safe_float(v: Any, default: float = 0.0) -> float:

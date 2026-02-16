@@ -11,6 +11,7 @@ from sqlalchemy.ext.asyncio import (
     async_sessionmaker,
     create_async_engine,
 )
+from sqlalchemy import text
 
 from alekfi.config import get_settings
 from alekfi.db.models import Base
@@ -47,10 +48,19 @@ def _get_session_factory() -> async_sessionmaker[AsyncSession]:
 
 
 async def init_db() -> None:
-    """Create all tables that don't yet exist (idempotent)."""
+    """Create all tables that don't yet exist (idempotent).
+
+    Uses a Postgres advisory lock so multiple services starting at the same time
+    do not race on CREATE TYPE / CREATE TABLE statements.
+    """
     engine = _get_engine()
     async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
+        # 81432211 is an arbitrary, stable lock id for AlekFi schema bootstrap.
+        await conn.execute(text("SELECT pg_advisory_lock(81432211)"))
+        try:
+            await conn.run_sync(Base.metadata.create_all)
+        finally:
+            await conn.execute(text("SELECT pg_advisory_unlock(81432211)"))
     logger.info("Database tables initialised")
 
 

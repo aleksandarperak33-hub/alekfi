@@ -59,6 +59,11 @@ class CorroborationWorker:
 
         # Priority 2: strict-near-miss signals from DB.
         signals = await self._fetch_near_strict_signals(limit=30)
+        queue_signals = await self._fetch_signals_for_queue_items(queue_items, limit=40)
+        by_id: dict[str, Signal] = {str(s.id): s for s in signals}
+        for s in queue_signals:
+            by_id[str(s.id)] = s
+        signals = list(by_id.values())
         if not signals and not queue_items:
             return
 
@@ -77,12 +82,49 @@ class CorroborationWorker:
                 "alekfi:corroboration:stats",
                 mapping={
                     "last_queue_items": len(queue_items),
+                    "queue_signal_matches": len(queue_signals),
                     "processed_total": self._processed,
                     "enriched_total": self._enriched,
                     "errors_total": self._errors,
                     "updated_at": datetime.now(timezone.utc).isoformat(),
                 },
             )
+
+    async def _fetch_signals_for_queue_items(self, queue_items: list[dict[str, Any]], limit: int = 40) -> list[Signal]:
+        if not queue_items:
+            return []
+        tickers = {str((q or {}).get("ticker") or "").upper() for q in queue_items}
+        tickers = {t for t in tickers if t and t != "MARKET"}
+        if not tickers:
+            return []
+
+        cutoff = datetime.now(timezone.utc) - timedelta(days=2)
+        async with get_session() as session:
+            rows = (
+                await session.execute(
+                    select(Signal)
+                    .where(Signal.created_at >= cutoff)
+                    .order_by(Signal.created_at.desc())
+                    .limit(400)
+                )
+            ).scalars().all()
+
+        out: list[Signal] = []
+        for s in rows:
+            try:
+                instruments = s.affected_instruments or []
+                sym = ""
+                if isinstance(instruments, list) and instruments:
+                    sym = str((instruments[0] or {}).get("symbol") or "").upper()
+                elif isinstance(instruments, dict):
+                    sym = str(instruments.get("symbol") or "").upper()
+                if sym in tickers:
+                    out.append(s)
+            except Exception:
+                continue
+            if len(out) >= limit:
+                break
+        return out
 
     async def _fetch_near_strict_signals(self, limit: int = 30) -> list[Signal]:
         cutoff = datetime.now(timezone.utc) - timedelta(days=2)
@@ -173,6 +215,7 @@ class CorroborationWorker:
 
     def _source_posts_from_signal(self, signal: Signal, research: dict[str, Any]) -> list[dict[str, Any]]:
         out: list[dict[str, Any]] = []
+        retrieval_time = datetime.now(timezone.utc).isoformat()
         for src in (signal.source_posts or []):
             if isinstance(src, dict):
                 out.append(
@@ -183,6 +226,8 @@ class CorroborationWorker:
                         "url": src.get("url") or src.get("u"),
                         "content_snippet": src.get("content_snippet") or src.get("s") or "",
                         "source_published_at": src.get("source_published_at") or src.get("published_at"),
+                        "retrieval_time": src.get("retrieval_time") or retrieval_time,
+                        "source_type": src.get("source_type") or "platform",
                     }
                 )
 
@@ -199,6 +244,8 @@ class CorroborationWorker:
                     "url": node.get("url"),
                     "content_snippet": node.get("snippet") or "",
                     "source_published_at": node.get("published_at"),
+                    "retrieval_time": retrieval_time,
+                    "source_type": "evidence_node",
                 }
             )
         return out
@@ -235,6 +282,7 @@ class CorroborationWorker:
             ).all()
 
         scored = []
+        retrieval_time = datetime.now(timezone.utc).isoformat()
         thesis_terms = {t.lower() for t in re.findall(r"[A-Za-z]{3,}", thesis or "")}
         for r in rows:
             platform = (r.platform or "unknown").lower()
@@ -256,6 +304,8 @@ class CorroborationWorker:
                         "url": r.url,
                         "content_snippet": content,
                         "source_published_at": r.source_published_at.isoformat() if r.source_published_at else None,
+                        "retrieval_time": retrieval_time,
+                        "source_type": "platform_search",
                     },
                 )
             )
@@ -363,4 +413,3 @@ class CorroborationWorker:
             "min_independence_for_top": 0.45,
             "verified_single_modality_ok": verified_single_ok,
         }
-

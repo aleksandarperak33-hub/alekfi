@@ -68,6 +68,7 @@ class SignalDecayWorker:
         self.last_cycle_at: str | None = None
         self._redis = None  # lazy init
         self._gateway: MarketDataGateway | None = None
+        self._legacy_signal_schema: bool | None = None
 
     # ── Price fetching ────────────────────────────────────────────────
 
@@ -271,6 +272,19 @@ class SignalDecayWorker:
         now = datetime.now(timezone.utc)
         processed = 0
 
+        # Newer schemas keep checkpoint labels in signal_outcomes; legacy schemas
+        # used checkpoint columns directly on signals. Avoid hard-failing if those
+        # legacy columns are absent.
+        if self._legacy_signal_schema is None:
+            self._legacy_signal_schema = await self._supports_legacy_signal_checkpoints()
+            if not self._legacy_signal_schema:
+                logger.info(
+                    "[signal_decay] legacy checkpoint columns not present on signals; "
+                    "skipping decay worker updates (use signal_outcomes labeler)."
+                )
+        if not self._legacy_signal_schema:
+            return 0
+
         # Query signals that still have unfilled checkpoints (price_t30 IS NULL)
         # and are at least 1 hour old
         query = text("""
@@ -435,6 +449,38 @@ class SignalDecayWorker:
                 )
 
         return processed
+
+    async def _supports_legacy_signal_checkpoints(self) -> bool:
+        """Whether signals table has legacy checkpoint columns used by this worker."""
+        required = {
+            "price_t1",
+            "price_t3",
+            "price_t7",
+            "price_t30",
+            "return_t1",
+            "return_t3",
+            "return_t7",
+            "return_t30",
+            "outcome",
+        }
+        try:
+            async with get_session() as session:
+                rows = (
+                    await session.execute(
+                        text(
+                            """
+                            SELECT column_name
+                            FROM information_schema.columns
+                            WHERE table_name = 'signals'
+                            """
+                        )
+                    )
+                ).fetchall()
+            cols = {str(r.column_name).lower() for r in rows}
+            return required.issubset(cols)
+        except Exception:
+            logger.warning("[signal_decay] schema capability check failed", exc_info=True)
+            return False
 
     async def _get_primary_ticker(self, signal_id: Any) -> str | None:
         """Extract the primary ticker from a signal's affected_instruments."""

@@ -12,13 +12,14 @@ This is intentionally lightweight and deterministic. It does not call LLMs.
 
 from __future__ import annotations
 
-import json
 import math
+import json
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Any
 from urllib.parse import urlparse
 
+from alekfi.marketdata import MarketDataGateway
 
 def _utcnow() -> datetime:
     return datetime.now(timezone.utc)
@@ -92,6 +93,7 @@ async def build_research_bundle(
     now = _utcnow()
     evidence = _build_evidence_graph(source_posts, source_event_time)
     tradability = await _build_tradability(redis, primary_sym, now)
+    empirical_priors = await _load_empirical_priors(redis)
 
     # Calibration prior: combine model conviction and empirical type accuracy (if present).
     type_acc = None
@@ -110,6 +112,7 @@ async def build_research_bundle(
         type_accuracy=type_acc,
         cluster_convergence=cluster_convergence,
         independence_score=evidence["independence_score"],
+        empirical_priors=empirical_priors,
     )
     forecast["novelty_score"] = round(
         _clamp(
@@ -155,6 +158,22 @@ async def build_research_bundle(
         "learned": learned,
         "controls": controls,
     }
+
+
+async def _load_empirical_priors(redis) -> dict[str, Any] | None:
+    """Load lightweight trained priors from Redis if available."""
+    if redis is None:
+        return None
+    try:
+        raw = await redis.get("alekfi:forecast:model:v1")
+        if not raw:
+            return None
+        obj = json.loads(raw)
+        if isinstance(obj, dict):
+            return obj
+    except Exception:
+        return None
+    return None
 
 
 def _build_evidence_graph(source_posts: list[dict[str, Any]], source_event_time: datetime | None) -> dict[str, Any]:
@@ -324,48 +343,24 @@ def _build_evidence_graph(source_posts: list[dict[str, Any]], source_event_time:
 
 
 async def _build_tradability(redis, primary_sym: str, now: datetime) -> dict[str, Any]:
-    # Use PriceTracker Redis cache when available to avoid API calls.
-    price = None
-    volume = None
-    change_1d = None
-    change_5d = None
-
-    if redis and primary_sym:
+    md = None
+    if primary_sym:
         try:
-            raw = await redis.get(f"alekfi:price:{primary_sym}")
-            if raw:
-                data = json.loads(raw)
-                price = _safe_float(data.get("price"), default=None)
-                volume = _safe_float(data.get("volume"), default=None)
-                change_1d = _safe_float(data.get("change_1d"), default=None)
-                change_5d = _safe_float(data.get("change_5d"), default=None)
+            gw = MarketDataGateway(redis_client=redis) if redis is not None else MarketDataGateway()
+            md = await gw.get_market_data(primary_sym, fail_closed=False)
         except Exception:
-            pass
+            md = None
 
-    dollar_vol = None
-    if price is not None and volume is not None and price > 0 and volume > 0:
-        dollar_vol = float(price) * float(volume)
+    price = md.last_price if md else None
+    volume = md.volume if md else None
+    change_1d = md.ret_1d if md else None
+    change_5d = md.ret_5d if md else None
+    dollar_vol = md.dollar_volume if md else None
+    spread_bps = md.spread_bps_est if md else 50.0
 
-    # Heuristic spread estimate (bps) by liquidity.
-    spread_bps = 50.0
-    if dollar_vol is not None:
-        if dollar_vol >= 250_000_000:
-            spread_bps = 2.0
-        elif dollar_vol >= 50_000_000:
-            spread_bps = 5.0
-        elif dollar_vol >= 10_000_000:
-            spread_bps = 12.0
-        elif dollar_vol >= 3_000_000:
-            spread_bps = 25.0
-        else:
-            spread_bps = 60.0
+    # Capacity proxy: assume 1% of daily dollar volume is tradable.
+    capacity_usd = min(dollar_vol * 0.01, 250_000.0) if dollar_vol is not None else None
 
-    # Capacity proxy: assume you can take 1% of $ volume per day.
-    capacity_usd = None
-    if dollar_vol is not None:
-        capacity_usd = min(dollar_vol * 0.01, 250_000.0)
-
-    # Basic pass/fail.
     tradable = True
     reasons: list[str] = []
     if price is not None and price < 1.0:
@@ -374,10 +369,17 @@ async def _build_tradability(redis, primary_sym: str, now: datetime) -> dict[str
     if dollar_vol is not None and dollar_vol < 3_000_000:
         tradable = False
         reasons.append("low_liquidity")
-    if price is None or volume is None:
-        # Unknown liquidity: not an outright fail, but not trade-ready.
+    if md is None or price is None or volume is None:
         tradable = False
         reasons.append("missing_market_data")
+    if md is not None:
+        qf = set(md.quality_flags or [])
+        if "AUTH_FAIL" in qf:
+            tradable = False
+            reasons.append("market_data_auth_fail")
+        if "SYMBOL_INVALID" in qf:
+            tradable = False
+            reasons.append("symbol_invalid")
 
     return {
         "pass": bool(tradable),
@@ -390,6 +392,9 @@ async def _build_tradability(redis, primary_sym: str, now: datetime) -> dict[str
         "capacity_usd_est": round(float(capacity_usd), 2) if capacity_usd is not None else None,
         "change_1d": round(float(change_1d), 3) if change_1d is not None else None,
         "change_5d": round(float(change_5d), 3) if change_5d is not None else None,
+        "atr_14": round(float(md.atr_14), 4) if md and md.atr_14 is not None else None,
+        "market_data_quality_flags": sorted(set(md.quality_flags)) if md else ["NO_DATA"],
+        "market_data_provider": md.provider_used if md else None,
         "asof": now.isoformat(),
     }
 
@@ -402,6 +407,7 @@ def _build_forecast(
     type_accuracy: float | None,
     cluster_convergence: float,
     independence_score: float,
+    empirical_priors: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     # Convert a "conviction" number into calibrated-ish probabilities.
     # This is a placeholder until the dedicated labeler + model is wired in.
@@ -446,8 +452,28 @@ def _build_forecast(
     d = (direction or "LONG").upper()
     out: dict[str, Any] = {"model": "v0_heuristic", "signal_type": sig_type, "by_horizon": {}}
 
+    # Optional learned priors from offline training pipeline.
+    priors = {}
+    global_priors = {}
+    if isinstance(empirical_priors, dict):
+        priors = (((empirical_priors.get("by_signal_type") or {}).get(sig_type)) or {}).get("horizons") or {}
+        global_priors = ((empirical_priors.get("global") or {}).get("horizons") or {})
+        if priors:
+            out["model"] = str(empirical_priors.get("model_name") or "v1_empirical_priors")
+        elif global_priors:
+            out["model"] = str(empirical_priors.get("model_name") or "v1_empirical_priors_global")
+
     for h in ("1h", "4h", "1d", "3d", "7d"):
+        prior_h = priors.get(h) if isinstance(priors, dict) else None
+        if not isinstance(prior_h, dict) and isinstance(global_priors, dict):
+            prior_h = global_priors.get(h)
+        prior_p = _safe_float((prior_h or {}).get("p_correct"), default=None)
         ph = p[h]
+        if prior_p is not None:
+            # Blend model prior with signal-specific conviction/evidence.
+            ph = _clamp(0.65 * ph + 0.35 * prior_p, 0.05, 0.95)
+        move_h = _safe_float((prior_h or {}).get("exp_favorable_move_pct"), default=move[h])
+        adv_h = _safe_float((prior_h or {}).get("exp_adverse_move_pct"), default=adverse[h])
         if d == "LONG":
             p_up, p_down, p_flat = ph, 1.0 - ph, 0.0
         elif d == "SHORT":
@@ -462,8 +488,8 @@ def _build_forecast(
             "p_up": round(p_up, 3),
             "p_down": round(p_down, 3),
             "p_flat": round(p_flat, 3),
-            "expected_move_pct": round(move[h], 3),
-            "expected_adverse_pct": round(adverse[h], 3),
+            "expected_move_pct": round(move_h, 3),
+            "expected_adverse_pct": round(adv_h, 3),
             "expected_time_to_move_hours": {"1h": 0.6, "4h": 2.0, "1d": 8.0, "3d": 24.0, "7d": 72.0}[h],
         }
 

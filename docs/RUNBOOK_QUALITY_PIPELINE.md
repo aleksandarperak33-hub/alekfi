@@ -1,89 +1,122 @@
 # AlekFi Quality Pipeline Runbook
 
-## 1) Baseline / Current Metrics Snapshot
-```bash
-ssh root@147.93.116.107 "python3 /docker/alekfi/scripts/metrics_snapshot.py"
-```
-Prints:
-- strict/non-strict counts
-- avg independence + unique platforms
-- label counts + skip reasons
-- provider health + yfinance error rate
-- convergence + candidate metrics
+## 0) Bring Stack Up (Local)
+If default ports are busy, use override envs.
 
-## 2) Provider Health + Cache Inspection
-Gateway health:
 ```bash
-ssh root@147.93.116.107 "docker exec alekfi-brain-1 /bin/sh -lc 'python -m alekfi.tools.marketdata_health'"
+POSTGRES_PORT=15432 REDIS_PORT=16379 API_PORT_HOST=18000 docker compose up -d --build
 ```
 
-Redis provider breaker states:
+Check status:
+
 ```bash
-ssh root@147.93.116.107 "docker exec alekfi-redis-1 /bin/sh -lc 'redis-cli -a \"$REDIS_PASSWORD\" --no-auth-warning KEYS alekfi:md:cb:*'"
+POSTGRES_PORT=15432 REDIS_PORT=16379 API_PORT_HOST=18000 docker compose ps
 ```
 
-## 3) Backfill Labels (dense outcomes)
-Full backfill:
+## 1) Baseline / Metrics Snapshot
+One command for strict/non-strict counts, independence/platform averages, labels, provider health, yfinance errors, and candidate/stall stats:
+
 ```bash
-ssh root@147.93.116.107 "docker exec alekfi-brain-1 /bin/sh -lc 'python -m alekfi.tools.backfill_labels --since 2026-01-01 --limit 3000 --force'"
+python3 scripts/metrics_snapshot.py
 ```
 
-Incremental backfill (recent window):
+## 2) Market Data Provider Health + Cache
+API health endpoints:
+
 ```bash
-ssh root@147.93.116.107 "docker exec alekfi-brain-1 /bin/sh -lc 'python -m alekfi.tools.backfill_labels --since 2026-02-01 --limit 1000'"
+curl -s http://localhost:8000/api/health
+curl -s http://localhost:8000/api/agentos/health
+```
+
+Redis circuit-breaker state:
+
+```bash
+docker exec alekfi-redis-1 /bin/sh -lc "redis-cli --no-auth-warning KEYS 'alekfi:md:cb:*'"
+```
+
+## 3) Backfill Labels (Dense Ground Truth)
+Backfill outcomes + null samples:
+
+```bash
+python3 -m alekfi.tools.backfill_labels --since 2026-01-01 --limit 3000 --include-null-samples --null-sample-limit 1500
+```
+
+Incremental backfill:
+
+```bash
+python3 -m alekfi.tools.backfill_labels --since 2026-02-01 --limit 1000
 ```
 
 ## 4) Nightly Label Job
+Nightly loop is started in `alekfi/main.py` for brain runtime.
+
 Manual run:
+
 ```bash
-ssh root@147.93.116.107 "docker exec alekfi-brain-1 /bin/sh -lc 'python -m alekfi.tools.nightly_labels --since-hours 48 --limit 1200'"
+python3 -m alekfi.tools.nightly_labels --since-hours 48 --limit 1200
 ```
 
-Service-managed loop starts from `alekfi/main.py` on brain startup.
+## 5) Forecast Priors Training
+Manual training + Redis publish:
 
-## 5) Evaluation Harness
-Run:
 ```bash
+python3 -m alekfi.tools.train_forecast_model --since-days 180 --min-samples 20
+```
+
+Artifact output:
+- `reports/forecast_model_v1.json`
+
+## 6) Evaluation Harness
+Run full quality eval:
+
+```bash
+python3 -m alekfi.tools.eval_harness --since-days 30 --topk 5,10,20
+```
+
+API views:
+
+```bash
+curl -s "http://localhost:8000/api/metrics/signal_quality?since_days=30"
+curl -s "http://localhost:8000/api/metrics/forecast_calibration?since_days=30"
+```
+
+## 7) Corroboration Worker Control
+Corroboration starts from `alekfi/main.py` (brain runtime).
+
+Temporary disable paths:
+- Set long interval: `CORROBORATION_INTERVAL_SECONDS=86400`
+- Or comment/env-gate worker startup at `alekfi/main.py` corroboration block.
+
+Restart brain only:
+
+```bash
+docker compose up -d --build brain
+```
+
+## 8) Strict Feed Verification
+Strict vs non-strict sanity check:
+
+```bash
+curl -s "http://localhost:8000/api/signals/forecasts?strict=true&limit=20"
+curl -s "http://localhost:8000/api/signals/forecasts?strict=false&limit=20"
+```
+
+## 9) Do-Not-Regress Checklist
+Run guardrails:
+
+```bash
+scripts/no_regressions.sh
+```
+
+This enforces:
+- no direct `import yfinance` outside gateway
+- fail-closed label smoke behavior
+- key unit tests for market data, corroboration, forecast contract, and API route contract
+- metrics snapshot generation
+
+## 10) Deployment Smoke Checks (VPS)
+```bash
+ssh root@147.93.116.107 "cd /docker/alekfi && docker compose up -d --build"
+ssh root@147.93.116.107 "python3 /docker/alekfi/scripts/metrics_snapshot.py"
 ssh root@147.93.116.107 "docker exec alekfi-brain-1 /bin/sh -lc 'python -m alekfi.tools.eval_harness --since-days 30 --topk 5,10,20'"
 ```
-
-Save report artifact:
-```bash
-ssh root@147.93.116.107 "mkdir -p /docker/alekfi/reports && docker exec alekfi-brain-1 /bin/sh -lc 'python -m alekfi.tools.eval_harness --since-days 30 --topk 5,10,20' > /docker/alekfi/reports/eval_harness_$(date +%Y%m%d_%H%M).json"
-```
-
-## 6) Corroboration Worker Control
-Currently started by brain process startup in `alekfi/main.py`.
-
-Restart brain/swarm with latest code:
-```bash
-ssh root@147.93.116.107 "cd /docker/alekfi && docker compose up -d --build brain swarm"
-```
-
-Disable corroboration quickly (hotfix path):
-- Comment out or env-gate corroboration worker startup in `alekfi/main.py`
-- Rebuild/restart brain
-
-## 7) Do-Not-Regress Checks
-Run all guardrails:
-```bash
-ssh root@147.93.116.107 "/docker/alekfi/scripts/no_regressions.sh"
-```
-
-Includes:
-- no direct yfinance imports outside gateway
-- fail-closed label smoke test
-- optional pytest test file
-- metrics snapshot
-
-## 8) Troubleshooting
-If strict feed is empty:
-1. Check strict/non-strict counts and independence distribution via metrics snapshot.
-2. Verify corroboration worker logs in `alekfi-brain-1`.
-3. Verify provider health open-circuit state.
-4. Verify label skip reasons are not dominated by degraded data.
-
-If labels stop updating:
-1. Run nightly labels manually.
-2. Inspect skip reasons (`DEGRADED_MARKET_DATA`, `SYMBOL_INVALID`, etc.).
-3. Inspect market data provider health and Redis cache connectivity.

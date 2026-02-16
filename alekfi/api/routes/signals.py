@@ -258,6 +258,17 @@ async def list_forecasts(
         except Exception:
             return -999.0
 
+    def directional_prob(direction: str, forecast_h: dict) -> float:
+        d = (direction or "LONG").upper()
+        try:
+            if d == "SHORT":
+                return float(forecast_h.get("p_down") or 0.0)
+            if d == "HEDGE":
+                return float(forecast_h.get("p_flat") or 0.0)
+            return float(forecast_h.get("p_up") or 0.0)
+        except Exception:
+            return 0.0
+
     async with get_session() as session:
         # Pull more than we need; we'll filter + sort in-process.
         stmt = select(Signal).order_by(Signal.created_at.desc()).limit(500)
@@ -321,7 +332,7 @@ async def list_forecasts(
                 "learned": bundle.get("learned"),
                 "controls": bundle.get("controls"),
                 "expected_pnl_pct": round(ev_pct, 4),
-                "calibrated_prob": round(float(forecast_h.get("p_up") or 0.0), 4),
+                "calibrated_prob": round(directional_prob(s.direction, forecast_h), 4),
                 "expected_return_pct": round(float(forecast_h.get("expected_move_pct") or 0.0), 4),
                 "expected_time_bucket": forecast_h.get("expected_time_to_move_hours"),
                 "thesis": s.thesis,

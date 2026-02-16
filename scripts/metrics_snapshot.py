@@ -132,15 +132,25 @@ def main() -> None:
     # Candidate/stall metrics from Redis.
     redis_pwd = env.get("REDIS_PASSWORD", "")
     auth = f"-a {shlex.quote(redis_pwd)} " if redis_pwd else ""
-    _, pipe_metrics = _run(
+    rc_pipe, pipe_metrics = _run(
         "docker exec alekfi-redis-1 /bin/sh -lc "
         + shlex.quote(f"redis-cli {auth} --no-auth-warning HGETALL alekfi:pipeline:metrics")
     )
-    _, candidate_keys = _run(
+    rc_candidates, candidate_keys = _run(
         "docker exec alekfi-redis-1 /bin/sh -lc "
         + shlex.quote(f"redis-cli {auth} --no-auth-warning KEYS 'alekfi:pipeline:cluster_state:*'")
     )
-    candidate_count = len([x for x in candidate_keys.splitlines() if x.strip()])
+    candidate_count = 0
+    if rc_candidates == 0 and "failed to connect to the docker API" not in candidate_keys.lower():
+        candidate_count = len(
+            [
+                x
+                for x in candidate_keys.splitlines()
+                if x.strip().startswith("alekfi:pipeline:cluster_state:")
+            ]
+        )
+    if rc_pipe != 0 and not pipe_metrics:
+        pipe_metrics = "pipeline metrics unavailable"
 
     payload = {
         "strict_count": len(strict),

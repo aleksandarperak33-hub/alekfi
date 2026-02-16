@@ -509,6 +509,35 @@ async def _run(args: argparse.Namespace) -> None:
                 except Exception:
                     logger.warning("Nightly label job not available", exc_info=True)
 
+                # v3: Daily forecast-priors training (feeds research_bundle model priors)
+                async def _forecast_priors_loop():
+                    import asyncio as _aio
+                    from alekfi.tools.train_forecast_model import train_priors as _train_priors, _store_redis as _store_priors
+
+                    await _aio.sleep(180)
+                    while True:
+                        try:
+                            payload = await _train_priors(
+                                since_days=int(os.environ.get("FORECAST_TRAIN_SINCE_DAYS", "180")),
+                                min_samples=int(os.environ.get("FORECAST_TRAIN_MIN_SAMPLES", "20")),
+                            )
+                            await _store_priors(payload)
+                            logger.info(
+                                "[forecast] priors trained: rows=%s signal_types=%s",
+                                payload.get("total_rows"),
+                                len((payload.get("by_signal_type") or {})),
+                            )
+                        except Exception:
+                            logger.warning("[forecast] priors training failed", exc_info=True)
+                        await _aio.sleep(86400)
+
+                try:
+                    priors_task = asyncio.create_task(_forecast_priors_loop(), name="forecast_priors")
+                    background_tasks.append(priors_task)
+                    logger.info("Forecast priors training loop started")
+                except Exception:
+                    logger.warning("Forecast priors training not available", exc_info=True)
+
                 # v3: Macro regime updater (runs every 30 min)
                 async def _macro_regime_loop():
                     import asyncio as _aio

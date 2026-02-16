@@ -70,7 +70,7 @@ if docker exec alekfi-brain-1 /bin/sh -lc "python - <<'PY'
 import importlib.util
 print('yes' if importlib.util.find_spec('pytest') else 'no')
 PY" | grep -q yes; then
-  docker exec alekfi-brain-1 /bin/sh -lc "cd /app && python -m pytest -q tests/test_marketdata_guardrails.py"
+  docker exec alekfi-brain-1 /bin/sh -lc "cd /app && python -m pytest -q tests/test_marketdata_guardrails.py tests/test_marketdata_contract.py tests/test_signal_decay_schema_guard.py tests/test_corroboration_worker.py tests/test_forecast_contract.py tests/test_api_routes_contract.py"
 else
   echo "SKIP: pytest unavailable in container"
 fi
